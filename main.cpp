@@ -51,8 +51,8 @@ int main()
     MiMercaderia.push_front(Martillo);
     MiMercaderia.push_front(Soga);
 
-    cout<<"First element lista merca: "<< MiMercaderia.front().get_nombreMerc() << endl; //chequeo
-    cout<<"Last element lista merca: "<< MiMercaderia.back().get_nombreMerc() << endl;
+    cout<<"First element lista mercaderia: "<< MiMercaderia.front().get_nombreMerc() << endl; //chequeo
+    cout<<"Last element lista mercaderia: "<< MiMercaderia.back().get_nombreMerc() << endl;
 
 
     Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
