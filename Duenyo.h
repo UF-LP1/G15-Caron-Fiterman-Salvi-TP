@@ -102,9 +102,9 @@ void set_cobrar(float);
 const float get_cobrar();
 
 
-void set_ListaProducts(list <Mercaderia*> MisProductos);
+void set_ListaProducts(list <Mercaderia> MisProductos);
 
-const list <Mercaderia*> get_ListaProducts();
+const list <Mercaderia> get_ListaProducts();
 
 float generarPresupuesto(list<string> ProductsQuiero);
     

@@ -159,13 +159,16 @@ const float Duenyo::get_cobrar() {
     return this->totalACobrar;
 }
 
-float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
-//recorro la lista y voy sumando los valores
+void Duenyo:: set_ListaProducts(list <Mercaderia> MisProductos){
+    this->ListaProductos = MisProductos;
+    return;
+}
 
-    //for()
-    //set y get
-   //acceder con *
-   //ir sumando
+const list <Mercaderia> Duenyo:: get_ListaProducts(){
+    return this->ListaProductos;
+}
+
+float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
 
     float presup = 00.0; //creo contador del presupuesto y lo inicializo
 
@@ -174,7 +177,7 @@ float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
 
     for(it = ListaProductos.begin(); it !=ListaProductos.end(); it++){ //recorro la lista de productos de la ferreteria
         for(it2 = ProductsQuiero.begin(); it2 !=ProductsQuiero.end(); it2++){ //recorro la lista de productos que quiere el cliente
-            if(it->get_nombreMerc() == *it2){
+            if(it->get_nombreMerc() == *it2){ //si son el mismo producto sumo el precio al total
                presup = presup + it->get_Precio();
             }
         }

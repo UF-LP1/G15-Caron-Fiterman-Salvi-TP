@@ -53,7 +53,7 @@ const bool Cliente::get_fotoArt() {
     return this->TengoFoto_oArtRoto;
 }
 
-void Cliente::set_ListaQuerQuiero(list <string> quiero) {
+void Cliente::set_ListaQueQuiero(list <string> quiero) {
     this->ListaQuiero = quiero;
     return;
 }
