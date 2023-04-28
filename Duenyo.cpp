@@ -26,7 +26,7 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
     this->CambioArticulo = cambioArt;
     this->DiferenciaArt = difArt;
     this->totalACobrar = TotCobrar;
-    this->ListaProductos = &MisProductos;
+    this->ListaProductos = MisProductos;
 
 
 }
@@ -167,12 +167,12 @@ float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
    //acceder con *
    //ir sumando
 
-    float presup = 0.0; //creo contador del presupuesto y lo inicializo
+    float presup = 00.0; //creo contador del presupuesto y lo inicializo
 
     list<Mercaderia>::iterator it;
     list <string>:: iterator it2;
 
-    for(it = ListaProductos->begin(); it !=ListaProductos->end(); it++){ //recorro la lista de productos de la ferreteria
+    for(it = ListaProductos.begin(); it !=ListaProductos.end(); it++){ //recorro la lista de productos de la ferreteria
         for(it2 = ProductsQuiero.begin(); it2 !=ProductsQuiero.end(); it2++){ //recorro la lista de productos que quiere el cliente
             if(it->get_nombreMerc() == *it2){
                presup = presup + it->get_Precio();
@@ -182,7 +182,7 @@ float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
    }
 
 
-    return 0.0; //devuelvo presup
+    return presup; //devuelvo presup
 }
 
 

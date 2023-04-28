@@ -8,8 +8,8 @@
 
 #include "Persona.h"
 #include "Cliente.h"
-#include <Herramientas_Alquiler.h>
-#include <Mercaderia.h>
+#include "Herramientas_Alquiler.h"
+#include "Mercaderia.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -114,7 +114,7 @@ private:
     bool CambioArticulo;
     float DiferenciaArt;
     float totalACobrar;
-    list <Mercaderia> *ListaProductos;
+    list <Mercaderia> ListaProductos;
 
 };
 
