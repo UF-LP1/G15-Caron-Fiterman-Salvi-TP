@@ -21,7 +21,7 @@
  * @param float
  */
 
-Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos) :Persona(nombre,dni) {
+Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia> MisProductos) :Persona(nombre,dni) {
     this->QueArticulo = art;
     this->CambioArticulo = cambioArt;
     this->DiferenciaArt = difArt;
@@ -71,7 +71,7 @@ bool Duenyo::AlquilerHerramienta( Herramientas_Alquiler, Cliente) {
  * @param Cliente
  * @return bool
  */
-bool Duenyo::Cambio( Mercaderia, Cliente) {
+bool Duenyo::Cambio(Mercaderia, Cliente) {
     return false;
 }
 
@@ -114,7 +114,7 @@ const string Duenyo::get_queArt() {
  * @param bool
  * @return void
  */
-void Duenyo::set_cambArt( bool cambioArt) {
+void Duenyo::set_cambArt(bool cambioArt) {
     this->CambioArticulo = cambioArt;
     return;
 }
@@ -163,9 +163,23 @@ float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
 //recorro la lista y voy sumando los valores
 
     //for()
-        //set y get
-        //acceder con *
-        //ir sumando
+    //set y get
+   //acceder con *
+   //ir sumando
+
+    float presup = 0.0; //creo contador del presupuesto y lo inicializo
+
+    list<Mercaderia>::iterator it;
+    list <string>:: iterator it2;
+
+    for(it = ListaProductos->begin(); it !=ListaProductos->end(); it++){ //recorro la lista de productos de la ferreteria
+        for(it2 = ProductsQuiero.begin(); it2 !=ProductsQuiero.end(); it2++){ //recorro la lista de productos que quiere el cliente
+            if(it->get_nombreMerc() == *it2){
+               presup = presup + it->get_Precio();
+            }
+        }
+
+   }
 
 
     return 0.0; //devuelvo presup

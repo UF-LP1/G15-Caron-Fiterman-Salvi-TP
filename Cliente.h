@@ -52,6 +52,7 @@ void set_fotoArt(bool foto);
 const bool get_fotoArt();
 
 
+void set_ListaQuerQuiero(list <string> quiero);
 
 const list<string> get_ListaQueQuiero();
 

@@ -30,7 +30,7 @@ public:
  * @param float
  * @param float
  */
- Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos);
+ Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia> MisProductos);
     
 /**
  * @param Cliente
@@ -41,7 +41,7 @@ void AtenderCliente(Cliente);
  * @param Cliente
  * @param Mercaderia
  */
-string const IdentificarArticuloDeFoto( Cliente, Mercaderia);
+string const IdentificarArticuloDeFoto(Cliente, Mercaderia);
     
 /**
  * @param Empleado
@@ -53,7 +53,7 @@ void CobrarYDarVuelto (Cliente);
  * @param Herramientas_Alquiler
  * @param Cliente
  */
-bool AlquilerHerramienta (Herramientas_Alquiler martillo,  Cliente pepe);
+bool AlquilerHerramienta (Herramientas_Alquiler martillo, Cliente pepe);
     
 /**
  * @param Mercaderia
@@ -65,13 +65,13 @@ bool Cambio(Mercaderia, Cliente);
  * @param Mercaderia
  * @param Cliente
  */
-float DiferenciaArticulo( Mercaderia,  Cliente);
+float DiferenciaArticulo(Mercaderia, Cliente);
     
 /**
  * @param Mercaderia
  * @param Cliente
  */
-float CalcularTotal( Mercaderia,  Cliente);
+float CalcularTotal(Mercaderia, Cliente);
     
 /**
  * @param string
@@ -90,14 +90,14 @@ const bool get_cambArt();
 /**
  * @param float
  */
-void set_difArt( float);
+void set_difArt(float);
     
 const float get_difArt();
     
 /**
  * @param float
  */
-void set_cobrar( float);
+void set_cobrar(float);
     
 const float get_cobrar();
 
@@ -114,7 +114,7 @@ private:
     bool CambioArticulo;
     float DiferenciaArt;
     float totalACobrar;
-    list <Mercaderia*> *ListaProductos;
+    list <Mercaderia> *ListaProductos;
 
 };
 

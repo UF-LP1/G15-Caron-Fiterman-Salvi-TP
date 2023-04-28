@@ -54,13 +54,14 @@ const string get_nombreMerc();
 void set_Envoltorio( bool);
     
 const bool get_Envoltorio();
+~Mercaderia();
 protected: 
     float Tamanyo;
     float Precio;
     bool EnvoltorioArticulo;
     string nombreMercaderia;
     
-~Mercaderia();
+
 };
 
 #endif //_MERCADERIA_H
