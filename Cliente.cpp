@@ -19,7 +19,7 @@
  * @param float
  */
 
-Cliente::Cliente(string nombre, string dni, string direcc, bool foto,  list <string> quiero) :Persona(nombre,dni) {
+Cliente::Cliente(string nombre, string dni, string direcc, bool foto, list <string> quiero) :Persona(nombre,dni) {
     this->domicilio=direcc;
     this->TengoFoto_oArtRoto = foto;
     this->ListaQuiero = quiero;

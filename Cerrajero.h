@@ -39,7 +39,7 @@ const string get_tipoDeLlave();
  * @param string
  */
 void set_tipoDeLlave(string llave);
-protected:
+
     
  ~Cerrajero();
 

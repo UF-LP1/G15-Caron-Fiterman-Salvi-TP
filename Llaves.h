@@ -36,7 +36,6 @@ const string get_tipoLlave();
  * @param string
  */
 void set_tipoLlave( string item);
-protected:
     
  ~Llaves();
 private:

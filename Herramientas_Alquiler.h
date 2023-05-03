@@ -48,7 +48,6 @@ const bool get_devSeg();
 
     
 const float get_precio();
-protected:
     
  ~Herramientas_Alquiler();
 private: 

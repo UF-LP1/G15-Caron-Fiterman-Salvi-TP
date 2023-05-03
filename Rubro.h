@@ -32,7 +32,6 @@ Rubro(float tam, float valor, bool envoltorio, string nombreMercaderia, string i
 void set_tipoRubro( string item);
     
 const string get_tipoRubro();
-protected:
     
 ~Rubro();
 private: 

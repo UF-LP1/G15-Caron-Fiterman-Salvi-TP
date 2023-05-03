@@ -50,7 +50,7 @@ void set_hoy(tm dia);
  * @param date hoy
  */
 const tm get_hoy();
-protected:
+
     
  ~Ferreteria();
 private: 

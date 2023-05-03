@@ -31,7 +31,6 @@ const bool get_estadoProblema();
  * @param bool status
  */
 void set_estadoProblema( bool status);
-protected:
     
  ~Plomero();
 private: 

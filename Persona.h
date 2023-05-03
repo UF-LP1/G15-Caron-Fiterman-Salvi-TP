@@ -28,8 +28,8 @@ const string get_nombre();
 protected: 
     const string Nombre;
     const string DNI;
-    
- ~Persona();
+
 };
+ ~Persona();
 
 #endif //_PERSONA_H

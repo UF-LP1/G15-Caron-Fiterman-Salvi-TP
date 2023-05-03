@@ -32,7 +32,7 @@ Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia, string i
 void set_tipoBanyo(string item);
     
 const string get_tipoBanyo();
-protected:
+
     
  ~Banyo();
 private: 

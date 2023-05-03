@@ -32,7 +32,7 @@ public:
 void set_tipoBazar(string item);
     
 const string get_tipoBazar();
-protected:
+
     
  ~Bazar();
 

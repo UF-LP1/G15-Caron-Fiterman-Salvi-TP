@@ -55,6 +55,7 @@ void set_Envoltorio( bool);
     
 const bool get_Envoltorio();
 ~Mercaderia();
+
 protected: 
     float Tamanyo;
     float Precio;

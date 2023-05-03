@@ -44,7 +44,7 @@ const bool get_estadoPedido();
 void set_devSeg(bool DevSeg);
     
 const bool get_devSeg();
-protected:
+
     
  ~Despachante();
 private: 

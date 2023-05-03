@@ -32,7 +32,7 @@ Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia, s
 void set_tipoElectri(string item);
     
 const string get_tipoElectri();
-protected:
+
     
  ~Electricidad();
 private: 
