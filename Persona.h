@@ -23,13 +23,15 @@ public:
 Persona(string nombre, string dni);
     
 const string get_DNI();
+
     
 const string get_nombre();
+~Persona();
+
 protected: 
     const string Nombre;
     const string DNI;
 
 };
- ~Persona();
 
 #endif //_PERSONA_H

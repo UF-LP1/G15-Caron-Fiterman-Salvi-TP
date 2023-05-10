@@ -170,7 +170,7 @@ const list <Mercaderia> Duenyo:: get_ListaProducts(){
 
 float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
 
-    float presup = 00.0; //creo contador del presupuesto y lo inicializo
+    float presup = 0.0; //creo contador del presupuesto y lo inicializo
 
     list<Mercaderia>::iterator it;
     list <string>:: iterator it2;

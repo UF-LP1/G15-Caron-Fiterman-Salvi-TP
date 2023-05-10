@@ -13,6 +13,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
+
 using namespace std;
 
 class Bazar: public Mercaderia {

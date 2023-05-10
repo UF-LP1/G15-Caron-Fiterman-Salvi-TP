@@ -27,7 +27,7 @@ public:
  * @param bool
  * @param float
  */
- Cliente (string nombre, string dni, string direcc, bool foto,  list <string> quiero);
+ Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero);
     
 /**
  * @param string queNecesito
@@ -67,7 +67,6 @@ const list<string> get_ListaQueQuiero();
 private: 
     string domicilio;
     bool TengoFoto_oArtRoto;
-    float QueTamañoNecesito;
     list<string> ListaQuiero;
 
 };
