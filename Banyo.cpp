@@ -16,7 +16,7 @@
  * @param bool
  * @param string
  */
- Banyo::Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia, string item) :Mercaderia(tam,valor,envoltorio, nombreMercaderia) {
+ Banyo::Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia,int cant, string item) :Mercaderia(tam,valor,envoltorio,nombreMercaderia,cant) {
     this->tipo_banyo= item;
 
 

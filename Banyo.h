@@ -24,7 +24,7 @@ public:
  * @param bool
  * @param string
  */
-Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia, string item);
+Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item);
     
 /**
  * @param string

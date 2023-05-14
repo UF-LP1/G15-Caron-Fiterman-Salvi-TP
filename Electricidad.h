@@ -24,7 +24,7 @@ public:
  * @param bool
  * @param string
  */
-Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia, string item);
+Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item);
     
 /**
  * @param string

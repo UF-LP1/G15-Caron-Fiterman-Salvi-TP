@@ -26,7 +26,7 @@ public:
  * @param sting
  */
 
-    Llaves(float tam, float valor, bool envoltorio, string nombreMercaderia, bool permiso, string item);
+Llaves(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, bool permiso, string item);
     
 const bool get_TengoPermisoLlave();
     

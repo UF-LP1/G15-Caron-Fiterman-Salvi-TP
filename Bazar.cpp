@@ -16,7 +16,7 @@
  * @param bool
  * @param string
  */
- Bazar::Bazar(float tam, float valor, bool envoltorio, string nombreMercaderia, string item) : Mercaderia(tam,valor,envoltorio, nombreMercaderia) {
+ Bazar::Bazar(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item) : Mercaderia(tam,valor,envoltorio, nombreMercaderia, cant) {
      this->tipo_bazar= item;
 }
 

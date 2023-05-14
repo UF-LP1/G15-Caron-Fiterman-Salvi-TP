@@ -21,12 +21,12 @@ public:
  * @param float
  * @param bool
  */
- Mercaderia(float tam, float valor, bool envoltorio, string nombreMercaderia);
+ Mercaderia(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant);
     
 /**
  * @param float tamanyo
  */
-void set_Tamanyo( float tamanyo);
+void set_Tamanyo(float tamanyo);
     
 /**
  * @param float tamanyo
@@ -47,13 +47,19 @@ const float get_Precio();
 void set_nombreMerc(string nombreMercaderia);
 
 const string get_nombreMerc();
+
+void set_Stock(int cant);
+
+const int get_Stock();
+
     
 /**
  * @param bool
  */
-void set_Envoltorio( bool);
+void set_Envoltorio(bool);
     
 const bool get_Envoltorio();
+
 ~Mercaderia();
 
 protected: 
@@ -61,6 +67,7 @@ protected:
     float Precio;
     bool EnvoltorioArticulo;
     string nombreMercaderia;
+    int stock;
     
 
 };

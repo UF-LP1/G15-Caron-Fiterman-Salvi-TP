@@ -33,13 +33,13 @@ int main()
 
     list<Mercaderia> MiMercaderia; //creo una lista de mercaderia
 
-    Mercaderia Tornillo(2.0,100.0,true,"tornillo"); //creo los articulos de mercaderia
-    Mercaderia Lampara(10.0,300.0,true,"lampara");
-    Mercaderia Cable(30.0,600.0,true,"cable");
-    Mercaderia Virulana(15.0,150.0,true,"virulana");
-    Mercaderia Soga(30.0,600.0,true,"soga");
-    Mercaderia Tender(30.0,1999.0,true,"tender");
-    Mercaderia Martillo(30.0,600.0,true,"martillo");
+    Mercaderia Tornillo(2.0,100.0,true,"tornillo", 5); //creo los articulos de mercaderia
+    Mercaderia Lampara(10.0,300.0,true,"lampara", 7);
+    Mercaderia Cable(30.0,600.0,true,"cable", 2);
+    Mercaderia Virulana(15.0,150.0,true,"virulana", 5);
+    Mercaderia Soga(30.0,600.0,true,"soga", 2);
+    Mercaderia Tender(30.0,1999.0,true,"tender", 15);
+    Mercaderia Martillo(30.0,600.0,true,"martillo", 20);
 
 
 

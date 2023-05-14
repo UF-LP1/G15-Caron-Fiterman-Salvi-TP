@@ -15,11 +15,12 @@
  * @param float
  * @param bool
  */
-Mercaderia::Mercaderia(float tam, float valor, bool envoltorio, string nombreMerc) {
+Mercaderia::Mercaderia(float tam, float valor, bool envoltorio, string nombreMerc, int cant) {
     this->Tamanyo = tam;
     this->Precio = valor;
     this->EnvoltorioArticulo = envoltorio;
     this->nombreMercaderia = nombreMerc;
+    this->stock = cant;
 }
 
 /**
@@ -80,6 +81,17 @@ void Mercaderia::set_nombreMerc(string nombreMerc){
 const string Mercaderia::get_nombreMerc(){
    return this->nombreMercaderia;
 }
+
+
+void Mercaderia::set_Stock(int cant) {
+   this->stock = cant;
+   return;
+}
+
+const int Mercaderia::get_Stock() {
+   return this->stock;
+}
+
 Mercaderia::~Mercaderia() {
 
 }

@@ -18,7 +18,7 @@
  * @param bool
  * @param sting
  */
-Llaves::Llaves(float tam, float valor, bool envoltorio, string nombreMercaderia, bool permiso, string item)  :Mercaderia(tam,valor,envoltorio,nombreMercaderia), TengoPermisoLlave(permiso){
+Llaves::Llaves(float tam, float valor, bool envoltorio, string nombreMercaderia,int cant, bool permiso, string item)  :Mercaderia(tam,valor,envoltorio,nombreMercaderia, cant), TengoPermisoLlave(permiso){
     this->tipo_llave = item;
 }
 

@@ -16,7 +16,7 @@
  * @param bool
  * @param string
  */
-Electricidad::Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia, string item)  :Mercaderia(tam,valor,envoltorio, nombreMercaderia){
+Electricidad::Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia,int cant, string item)  :Mercaderia(tam,valor,envoltorio, nombreMercaderia, cant){
     this->tipo_electri=item;
 }
 
