@@ -11,7 +11,7 @@
  */
 
 
-Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia> MisProductos) :Persona(nombre,dni) {
+Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos) :Persona(nombre,dni) {
     this->QueArticulo = art;
     this->CambioArticulo = cambioArt;
     this->DiferenciaArt = difArt;
@@ -100,33 +100,30 @@ const float Duenyo::get_cobrar() {
     return this->totalACobrar;
 }
 
-void Duenyo:: set_ListaProducts(list <Mercaderia> MisProductos){
+void Duenyo:: set_ListaProducts(list <Mercaderia*> MisProductos){
     this->ListaProductos = MisProductos;
     return;
 }
 
-const list <Mercaderia> Duenyo:: get_ListaProducts(){
+const list <Mercaderia*> Duenyo:: get_ListaProducts(){
     return this->ListaProductos;
 }
 
-float Duenyo::generarPresupuesto(list<string> ProductsQuiero){
+float Duenyo::generarPresupuesto(list<string> ProductsQuiero) {
+    float presup = 0.0; // Creo contador del presupuesto y lo inicializo
 
-    float presup = 0.0; //creo contador del presupuesto y lo inicializo
+    list<Mercaderia*>::iterator it;
+    list<string>::iterator it2;
 
-    list<Mercaderia>::iterator it;
-    list <string>:: iterator it2;
-
-    for(it = ListaProductos.begin(); it !=ListaProductos.end(); it++){ //recorro la lista de productos de la ferreteria
-        for(it2 = ProductsQuiero.begin(); it2 !=ProductsQuiero.end(); it2++){ //recorro la lista de productos que quiere el cliente
-            if(it->get_nombreMerc() == *it2){ //si son el mismo producto sumo el precio al total
-               presup = presup + it->get_Precio();
+    for (it = ListaProductos.begin(); it != ListaProductos.end(); it++) { // Recorro la lista de productos de la ferreteria
+        for (it2 = ProductsQuiero.begin(); it2 != ProductsQuiero.end(); it2++) { // Recorro la lista de productos que quiere el cliente
+            if ((*it)->get_nombreMerc() == *it2) { // Si son el mismo producto, sumo el precio al total
+                presup += (*it)->get_Precio();
             }
         }
+    }
 
-   }
-
-
-    return presup; //devuelvo presup
+    return presup; // Devuelvo presup
 }
 
 
