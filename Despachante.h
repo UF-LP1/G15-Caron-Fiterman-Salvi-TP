@@ -17,36 +17,29 @@
 using namespace std;
 
 class Despachante: public Persona {
-public: 
+public:
     
-/**
- * @param string
- * @param string
- * @param bool
- */
+
 Despachante(string nombre , string dni, bool estado);
     
-/**
- * @param Cliente
- */
-void EntregarPedido(Cliente pepe);
-    
-/**
- * @param bool status
- */
-void set_estadoPedido(bool estado);
-    
-const bool get_estadoPedido();
-    
-/**
- * @param bool
- */
-void set_devSeg(bool DevSeg);
-    
-const bool get_devSeg();
+
+    void EntregarPedido(Cliente Cli);
+
+    void set_estadoPedido(bool estado);
+
+    const bool get_estadoPedido();
+
+
+    void set_devSeg(bool DevSeg);
+
+    const bool get_devSeg();
+
+
+    friend void set_domicilio(string direcc);
 
     
- ~Despachante();
+    ~Despachante();
+
 private: 
     bool estadoPedido;
 };

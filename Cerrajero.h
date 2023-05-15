@@ -9,6 +9,7 @@
 #include "Persona.h"
 #include "Cliente.h"
 #include "Mercaderia.h"
+#include "Llaves.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -18,30 +19,20 @@
 using namespace std;
 
 class Cerrajero: public Persona {
-public: 
-    
-/**
- * @param string
- * @param string
- * @param string
- */
-Cerrajero(string nombre, string dni, string llave);
-    
-/**
- * @param Mercaderia
- * @param Cliente
- */
-const void HacerCopiaLlave(Mercaderia quiero, Cliente pepe);
-    
-const string get_tipoDeLlave();
-    
-/**
- * @param string
- */
-void set_tipoDeLlave(string llave);
 
+public:
     
- ~Cerrajero();
+    Cerrajero(string nombre, string dni, string llave);
+
+
+    bool HacerCopiaLlave(Llaves llave);
+
+    const string get_tipoDeLlave();
+
+    void set_tipoDeLlave(string llave);
+    friend class Llaves;
+    
+    ~Cerrajero();
 
 private: 
     string tipoDeLlave;

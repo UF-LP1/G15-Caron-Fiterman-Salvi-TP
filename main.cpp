@@ -5,10 +5,12 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <QDateTime>
 #include "Cliente.h"
 #include "Duenyo.h"
 #include "Mercaderia.h"
 #include "Persona.h"
+#include "Ferreteria.h"
 
 
 using namespace std;
@@ -17,7 +19,10 @@ using namespace std;
 int main()
 {
 
+    cout<<"estan abiertos?"<<endl;
+    Ferreteria::CartelAbiertoCerrado();
 
+/**
     list<string> listaCli; //creo la lista que va a llevar el cliente
 
     listaCli.push_back("tornillo"); //primer elemento que tiene el cliente en su lista
@@ -59,7 +64,7 @@ int main()
 
     cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(listaCli) << endl; //llamo a get presupuesto
 
-
+*/
 
 
 

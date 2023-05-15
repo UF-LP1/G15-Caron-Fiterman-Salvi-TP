@@ -10,31 +10,23 @@
  */
 
 
-/**
- * @param float
- * @param float
- * @param bool
- * @param string
- */
- Bazar::Bazar(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item) : Mercaderia(tam,valor,envoltorio, nombreMercaderia, cant) {
-     this->tipo_bazar= item;
+ Bazar::Bazar(float tam, float valor, bool envoltorio, int cant, string nombreBazar) : Mercaderia(tam,valor,envoltorio,cant) {
+     this->nombreMercaderia = nombreBazar;
 }
 
-/**
- * @param string
- * @return void
- */
-void Bazar::set_tipoBazar(string item) {
-     this->tipo_bazar= item;
+
+void Bazar::set_nombreMerc(string &nombreBazar) {
+     this->nombreMercaderia = nombreBazar;
      return;
 }
 
-/**
- * @return const string
- */
-const string Bazar::get_tipoBazar() {
-    return this->tipo_bazar;
+
+const string Bazar::get_nombreMerc() {
+   this->nombreMercaderia;
 }
+
+
+
 
 Bazar::~Bazar() {
 

@@ -16,25 +16,18 @@
 using namespace std;
 
 class Electricidad: public Mercaderia {
-public: 
+public:
     
-/**
- * @param float
- * @param float
- * @param bool
- * @param string
- */
-Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item);
+Electricidad(float tam, float valor, bool envoltorio,int cant, string nombreElectricidad);
     
-/**
- * @param string
- */
-void set_tipoElectri(string item);
-    
-const string get_tipoElectri();
+    void set_nombreMerc(string &nombreElectricidad);
+
+    const string get_nombreMerc();
+
 
     
  ~Electricidad();
+
 private: 
     string tipo_electri;
 };

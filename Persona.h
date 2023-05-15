@@ -14,19 +14,15 @@
 using namespace std;
 
 class Persona {
-public: 
-    
-/**
- * @param string
- * @param string
- */
-Persona(string nombre, string dni);
-    
-const string get_DNI();
+public:
 
-    
-const string get_nombre();
-~Persona();
+    Persona(string nombre, string dni);
+
+    const string get_DNI();
+
+
+    const string get_nombre();
+    ~Persona();
 
 protected: 
     const string Nombre;

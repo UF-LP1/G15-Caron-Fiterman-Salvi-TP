@@ -16,27 +16,16 @@
 using namespace std;
 
 class Banyo: public Mercaderia {
-public: 
+public:
     
-/**
- * @param float
- * @param float
- * @param bool
- * @param string
- */
-Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item);
-    
-/**
- * @param string
- */
-void set_tipoBanyo(string item);
-    
-const string get_tipoBanyo();
+    Banyo(float tam, float valor, bool envoltorio, int cant, string nombreBanyo);
 
-    
- ~Banyo();
-private: 
-    string tipo_banyo;
+    void set_nombreMerc(string &nombreBanyo);
+
+    const string get_nombreMerc();
+
+    ~Banyo();
+
 };
 
 #endif //_BANYO_H

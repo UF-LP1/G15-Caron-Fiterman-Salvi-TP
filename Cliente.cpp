@@ -10,24 +10,13 @@
  */
 
 
-/**
- * @param string
- * @param string
- * @param string
- * @param string
- * @param bool
- * @param float
- */
-
 Cliente::Cliente(string nombre, string dni, string direcc, bool foto, list <string> quiero) :Persona(nombre,dni) {
     this->domicilio=direcc;
     this->TengoFoto_oArtRoto = foto;
     this->ListaQuiero = quiero;
-
-
 }
 
-void Cliente::pedirArticulo(Mercaderia queNecesito, bool foto) {
+void Cliente::pedirArticulo(bool foto) {
     return;
 }
 
@@ -61,7 +50,6 @@ void Cliente::set_ListaQueQuiero(list <string> quiero) {
 const list<string> Cliente::get_ListaQueQuiero(){
     return this->ListaQuiero;
 }
-
 
 
 

@@ -14,53 +14,37 @@
 using namespace std;
 
 class Mercaderia {
-public: 
+public:
     
-/**
- * @param float
- * @param float
- * @param bool
- */
- Mercaderia(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant);
-    
-/**
- * @param float tamanyo
- */
-void set_Tamanyo(float tamanyo);
-    
-/**
- * @param float tamanyo
- */
-const float get_Tamanyo();
-    
-/**
- * @param float precio
- */
-void set_Precio(float precio);
-    
-/**
- * @param float precio
- */
-const float get_Precio();
+
+    Mercaderia(float tam, float valor, bool envoltorio, int cant);
+
+    void set_Tamanyo(float tamanyo);
 
 
-void set_nombreMerc(string nombreMercaderia);
+    const float get_Tamanyo();
 
-const string get_nombreMerc();
 
-void set_Stock(int cant);
+    void set_Precio(float precio);
 
-const int get_Stock();
 
-    
-/**
- * @param bool
- */
-void set_Envoltorio(bool);
-    
-const bool get_Envoltorio();
+    const float get_Precio();
 
-~Mercaderia();
+
+    virtual void set_nombreMerc();
+
+    virtual const string get_nombreMerc();
+
+    void set_Stock(int cant);
+
+    const int get_Stock();
+
+
+    void set_Envoltorio(bool);
+
+    const bool get_Envoltorio();
+
+    ~Mercaderia();
 
 protected: 
     float Tamanyo;

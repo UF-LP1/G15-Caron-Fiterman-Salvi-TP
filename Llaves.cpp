@@ -18,30 +18,22 @@
  * @param bool
  * @param sting
  */
-Llaves::Llaves(float tam, float valor, bool envoltorio, string nombreMercaderia,int cant, bool permiso, string item)  :Mercaderia(tam,valor,envoltorio,nombreMercaderia, cant), TengoPermisoLlave(permiso){
-    this->tipo_llave = item;
+Llaves::Llaves(float tam, float valor, bool envoltorio,int cant, bool permiso, string nombreLlave)  :Mercaderia(tam,valor,envoltorio, cant), TengoPermisoLlave(permiso){
+    this->nombreMercaderia = nombreLlave;
 }
 
-/**
- * @return const bool
- */
+
 const bool Llaves::get_TengoPermisoLlave() {
     return this->TengoPermisoLlave;
 }
 
-/**
- * @return const string
- */
-const string Llaves::get_tipoLlave() {
-    return this->tipo_llave;
+const string Llaves::get_nombreMerc() {
+    return this->nombreMercaderia;
 }
 
-/**
- * @param string
- * @return void
- */
-void Llaves::set_tipoLlave( string item) {
-    this->tipo_llave = item;
+
+void Llaves::set_nombreMerc(string &nombreLlave) {
+    this->nombreMercaderia = nombreLlave;
     return;
 }
 

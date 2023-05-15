@@ -10,32 +10,22 @@
  */
 
 
-/**
- * @param float
- * @param float
- * @param bool
- * @param string
- */
- Banyo::Banyo(float tam, float valor, bool envoltorio, string nombreMercaderia,int cant, string item) :Mercaderia(tam,valor,envoltorio,nombreMercaderia,cant) {
-    this->tipo_banyo= item;
+ Banyo::Banyo(float tam, float valor, bool envoltorio,int cant, string nombreBanyo) :Mercaderia(tam,valor,envoltorio,cant) {
+    this->nombreMercaderia= nombreBanyo;
 
 
 }
-/**
- * @param string
- * @return void
- */
-void Banyo::set_tipoBanyo(string item) {
-    this->tipo_banyo= item;
+
+void Banyo::set_nombreMerc(string &nombreBanyo){
+    this->nombreMercaderia= nombreBanyo;
     return;
 }
 
-/**
- * @return const string
- */
-const string Banyo::get_tipoBanyo() {
-    return this->tipo_banyo;
+
+const string Banyo::get_nombreMerc() {
+    return this->nombreMercaderia;
 }
+
 
 Banyo::~Banyo() {
 

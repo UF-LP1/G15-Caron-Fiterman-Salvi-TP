@@ -16,28 +16,19 @@
 using namespace std;
 
 class Llaves: public Mercaderia {
-public: 
-    
-/**
- * @param float
- * @param float
- * @param bool
- * @param bool
- * @param sting
- */
+public:
 
-Llaves(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, bool permiso, string item);
-    
-const bool get_TengoPermisoLlave();
-    
-const string get_tipoLlave();
-    
-/**
- * @param string
- */
-void set_tipoLlave( string item);
-    
- ~Llaves();
+
+    Llaves(float tam, float valor, bool envoltorio, int cant, bool permiso, string nombreLlave);
+
+    const bool get_TengoPermisoLlave();
+
+    void set_nombreMerc(string &nombreLlave);
+
+    const string get_nombreMerc();
+
+
+     ~Llaves();
 private:
     const bool TengoPermisoLlave;
     string tipo_llave;

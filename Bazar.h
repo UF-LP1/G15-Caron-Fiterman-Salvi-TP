@@ -17,25 +17,17 @@
 using namespace std;
 
 class Bazar: public Mercaderia {
-public: 
-    
-/**
- * @param float
- * @param float
- * @param bool
- * @param string
- */
- Bazar(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item);
-    
-/**
- * @param string
- */
-void set_tipoBazar(string item);
-    
-const string get_tipoBazar();
+public:
+
+    Bazar(float tam, float valor, bool envoltorio,int cant, string nombreBazar);
+
+
+    void set_nombreMerc(string &nombreBazar);
+
+    const string get_nombreMerc();
 
     
- ~Bazar();
+    ~Bazar();
 
 private: 
     string tipo_bazar;

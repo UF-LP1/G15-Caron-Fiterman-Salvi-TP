@@ -10,43 +10,36 @@
  */
 
 
-/**
- * @param string
- * @param string
- * @param bool
- */
 Despachante::Despachante(string nombre , string dni, bool estado) :Persona(nombre,dni) {
     this->estadoPedido=estado;
 }
 
-/**
- * @param Cliente
- * @return void
- */
-void Despachante::EntregarPedido(Cliente) {
+
+void Despachante::EntregarPedido(Cliente Cli) {
+    bool entregado = false; //se puedo entregar el paaquete?
+    entregado = rand()% (0-1)+1;
+    if(entregado == true){
+        cout<<"el pedido fue entregado en "<<Cli.get_domicilio()<<endl;
+        this->estadoPedido = true;
+    }
+    else{
+        this->estadoPedido = false;
+        cout<<"el pedido no fue entregado en"<<Cli.get_domicilio()<<endl;
+    }
+
     return;
 }
 
-/**
- * @param bool status
- * @return void
- */
+
 void Despachante::set_estadoPedido(bool estado) {
     this->estadoPedido=estado;
     return;
 }
 
-/**
- * @return const bool
- */
+
 const bool Despachante::get_estadoPedido() {
     return this->estadoPedido;
 }
-
-/**
- * @param bool
- * @return void
- */
 
 
 Despachante::~Despachante() {

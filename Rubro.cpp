@@ -16,24 +16,24 @@
  * @param bool
  * @param string
  */
-Rubro::Rubro(float tam, float valor, bool envoltorio, string nombreMercaderia, int cant, string item)  :Mercaderia(tam,valor,envoltorio, nombreMercaderia, cant) {
-    this->tipo_rubro=item;
+Rubro::Rubro(float tam, float valor, bool envoltorio, int cant, string nombreRubro)  :Mercaderia(tam,valor,envoltorio, cant) {
+    this->nombreMercaderia=nombreRubro;
 }
 
 /**
  * @param string
  * @return void
  */
-void Rubro::set_tipoRubro( string item) {
-    this->tipo_rubro=item;
+void Rubro::set_nombreMerc(string &nombreRubro) {
+    this->nombreMercaderia=nombreRubro;
     return;
 }
 
 /**
  * @return const string
  */
-const string Rubro::get_tipoRubro() {
-    return this->tipo_rubro;
+const string Rubro::get_nombreMerc() {
+    return this->nombreMercaderia;
 }
 
  Rubro::~Rubro() {

@@ -10,58 +10,35 @@
  */
 
 
-/**
- * @param string
- * @param date
- * @param date
- */
-Ferreteria::Ferreteria(string Nombre, tm horario, tm dia) :nombre(Nombre) {
-    this->horarios=horario;
-    this->hoy=dia;
+
+Ferreteria::Ferreteria(string Nombre) :nombre(Nombre) {
 }
 
-/**
- * @param date horarios
- * @param date hoy
- * @return bool
- */
-bool Ferreteria::CartelAbiertoCerrado(tm, tm) {
-    return false;
-}
 
-/**
- * @param date horarios
- * @return void
- */
-void Ferreteria::set_horario(tm horario) {
-    this->horarios=horario;
+void Ferreteria::CartelAbiertoCerrado() {
+
+    QDateTime dateTime = QDateTime::currentDateTime();
+
+    int horarioDiaSem = dateTime.date().day();
+    int horarioHora = dateTime.time().hour();
+    int horarioMin = dateTime.time().minute(); //hora actual
+
+    bool abierto = true;
+
+    if(((horarioHora>=7 && horarioMin==30 ) && horarioHora<=13) || ( horarioHora>=17 && horarioHora<=20 )){
+        if(horarioDiaSem>=1 && horarioDiaSem<=5)
+            abierto = true;
+        }
+
+    else
+        abierto = false;
+
+    string mensaje = (abierto == true) ? "Estamos Abiertos" : "Estamos Cerrados";
+    cout << mensaje << endl;
+
     return;
 }
 
-/**
- * @param date horarios
- * @return const void
- */
-const tm Ferreteria::get_horario() {
-    return this->horarios;
-}
-
-/**
- * @param date hoy
- * @return void
- */
-void Ferreteria::set_hoy(tm dia) {
-    this->hoy=dia;
-    return;
-}
-
-/**
- * @param date hoy
- * @return const void
- */
-const tm Ferreteria::get_hoy() {
-    return this->hoy;
-}
 
 Ferreteria::~Ferreteria() {
 

@@ -10,31 +10,22 @@
  */
 
 
-/**
- * @param float
- * @param float
- * @param bool
- * @param string
- */
-Electricidad::Electricidad(float tam, float valor, bool envoltorio, string nombreMercaderia,int cant, string item)  :Mercaderia(tam,valor,envoltorio, nombreMercaderia, cant){
-    this->tipo_electri=item;
+Electricidad::Electricidad(float tam, float valor, bool envoltorio,int cant, string nombreElectricidad)  :Mercaderia(tam,valor,envoltorio, cant){
+    this->nombreMercaderia=nombreElectricidad;
 }
 
-/**
- * @param string
- * @return void
- */
-void Electricidad::set_tipoElectri(string item) {
-    this->tipo_electri=item;
+
+void Electricidad::set_nombreMerc(string &nombreElectricidad) {
+    this->nombreMercaderia=nombreElectricidad;
     return;
 }
 
-/**
- * @return const string
- */
-const string Electricidad::get_tipoElectri() {
-    return this->tipo_electri;
+
+const string Electricidad::get_nombreMerc() {
+    return this->nombreMercaderia;
 }
+
+
 
 Electricidad::~Electricidad() {
 
