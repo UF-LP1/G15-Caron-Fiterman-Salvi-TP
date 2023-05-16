@@ -46,20 +46,34 @@ const bool Duenyo:: IdentificarArticuloDeFoto(Cliente Cli) {
 }
 
 void Duenyo::CobrarYDarVuelto(Cliente Cli) {
+    //llama a calc presup
+    //cobra al cliente
+    //fue exitoso el pago?
+    //restar plata a cliente y sumar a duenyo? --> deberiamos agregar plata en ambos
 
     return;
 }
 
 bool Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq, Cliente Cli) {
+
+    //se devuelve el segururo? get estado
+    //calcular cuanto tiempo lo uso y por ende cuanto es el alquiler
     return false;
 }
 
 bool Duenyo::Cambio(Mercaderia Merc, Cliente Cli) {
+    //se devuelve el segururo? bool random
+    //estado envoltorio  --> get estado
+    //calcular diferencia de lo que salia anres y lo que sale ahora
+
     return false;
 }
 
 
 float Duenyo::DiferenciaArticulo(Mercaderia Merc, Cliente Cli) {
+
+    //calcular diferencia de lo que salia anres y lo que sale ahora
+
     return 0.0;
 }
 

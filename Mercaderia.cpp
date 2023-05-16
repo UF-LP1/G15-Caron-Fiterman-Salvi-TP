@@ -92,6 +92,21 @@ const int Mercaderia::get_Stock() {
    return this->stock;
 }
 
+
 Mercaderia::~Mercaderia() {
 
 }
+
+int Mercaderia::stock = 10; //dejamos como base que hay 10 de cada item :)
+
+
+Mercaderia& Mercaderia::operator+=(int cantidad) {
+   stock += cantidad;
+   return *this;
+} // Sobrecarga del operador += (suma la cantidad que quiero al stock)
+
+
+Mercaderia& Mercaderia::operator-=(int cantidad) {
+   stock -= cantidad;
+   return *this;
+} // Sobrecarga del operador -= (resta la cantidad que quiero del stock)

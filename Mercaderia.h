@@ -44,6 +44,11 @@ public:
 
     const bool get_Envoltorio();
 
+    Mercaderia& operator+=(int cantidad); // Sobrecarga del operador +=
+
+    Mercaderia& operator-=(int cantidad); // Sobrecarga del operador -=
+
+
     ~Mercaderia();
 
 protected: 
@@ -51,7 +56,7 @@ protected:
     float Precio;
     bool EnvoltorioArticulo;
     string nombreMercaderia;
-    int stock;
+    static int stock;
     
 
 };
