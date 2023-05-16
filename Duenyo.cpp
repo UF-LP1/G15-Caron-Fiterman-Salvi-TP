@@ -15,7 +15,7 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
     this->QueArticulo = art;
     this->CambioArticulo = cambioArt;
     this->DiferenciaArt = difArt;
-    this->totalACobrar = TotCobrar;
+    this->Dinero = TotCobrar;
     this->ListaProductos = MisProductos;
 
 
@@ -45,13 +45,33 @@ const bool Duenyo:: IdentificarArticuloDeFoto(Cliente Cli) {
     // si el cliente trajo foto: cliente le muestra la foto al duenyo y el mismo dice si tiene el acticulo o no
 }
 
-void Duenyo::CobrarYDarVuelto(Cliente Cli) {
-    //llama a calc presup
-    //cobra al cliente
-    //fue exitoso el pago?
-    //restar plata a cliente y sumar a duenyo? --> deberiamos agregar plata en ambos
+bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq, Mercaderia Merc) {
 
-    return;
+    bool estadoPago = false;
+    float dineroCaja;
+    float dineroCliente;
+    dineroCaja = get_dinero();
+    dineroCliente = Cli.get_dinero();
+
+    float total = 0;
+
+    total = total + generarPresupuesto(Cli);
+    total = total + AlquilerHerramienta (HerrAlq);
+    total = total + DiferenciaArticulo(Merc, Cli); //calculo el total de todo
+
+    //chequeo que el cliente tenga fondos:
+    if(dineroCliente >= total){
+        dineroCliente = dineroCliente - total;
+        Cli.set_dinero(dineroCliente); //resto el pago al cliente
+
+        dineroCaja = dineroCaja + total;
+        set_dinero(dineroCaja); //sumo el pago a la caja
+
+        estadoPago = true;
+    }
+    //si el cliente no tiene suficiente dinero el pago no se puede efectuar
+
+    return estadoPago;
 }
 
 float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq) {
@@ -61,30 +81,33 @@ float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq) {
 
     if(HerrAlq.get_condicionArt()==true) {
         HerrAlq.set_devSeg(true);
-        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio();
+        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio() - HerrAlq.get_PrecioSeg(); //si esta en bueas condiciones se devuelve el seguro
     }
     else {
         HerrAlq.set_devSeg(false);
-        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio() + HerrAlq.get_PrecioSeg();
+        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio(); //si esta en malas condiciones no se devuelve el seguro (no se lo cobra aca porque ya se lo cobran antes)
     }
 
     return total;
 }
 
-bool Duenyo::Cambio(Mercaderia Merc, Cliente Cli) {
+/*bool Duenyo::Cambio(Mercaderia Merc, Cliente Cli) {
     //se devuelve el segururo? bool random
     //estado envoltorio  --> get estado
     //calcular diferencia de lo que salia anres y lo que sale ahora
 
     return false;
-}
+}*/
 
 
 float Duenyo::DiferenciaArticulo(Mercaderia Merc, Cliente Cli) {
+    float diferencia = 0;
 
-    //calcular diferencia de lo que salia anres y lo que sale ahora
+    if(Cli.get_Cambio() == true){
+        diferencia = Merc.get_Precio() - Cli.get_PrecioArtViejo(); //calcula lo que el cliente debe argegar de pago para cambiar el articulo
+    }
 
-    return 0.0;
+    return diferencia;
 }
 
 
@@ -123,14 +146,14 @@ const float Duenyo::get_difArt() {
 }
 
 
-void Duenyo::set_cobrar(float TotCobrar) {
-    this->totalACobrar = TotCobrar;
+void Duenyo::set_dinero(float TotCobrar) {
+    this->Dinero = TotCobrar;
     return;
 }
 
 
-const float Duenyo::get_cobrar() {
-    return this->totalACobrar;
+const float Duenyo::get_dinero() {
+    return this->Dinero;
 }
 
 void Duenyo:: set_ListaProducts(list <Mercaderia*> MisProductos){
@@ -156,8 +179,6 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
             }
         }
     }
-
-    set_cobrar(presup);
 
     return presup; // Devuelvo presup
 }

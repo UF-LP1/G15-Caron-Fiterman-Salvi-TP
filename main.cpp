@@ -44,7 +44,7 @@ int main()
     cout<<"First element lista cliente: "<< listaCli.front() << endl; //chequeo
     cout<<"Last element lista cliente: "<< listaCli.back() << endl;
 
-    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaCli, 2000000, false); //creo cliente, le paso la lista
+    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaCli, 2000000, false, false, 150); //creo cliente, le paso la lista
 
     list<Mercaderia*> MiMercaderia; //creo una lista de mercaderia
 

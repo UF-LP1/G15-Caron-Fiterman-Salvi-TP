@@ -26,24 +26,22 @@ class Duenyo: public Persona {
 public:
     
 
-    Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos);
+    Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float dinero, list <Mercaderia*> MisProductos);
     
 
     void AtenderCliente(Cliente Cli);
 
     bool const IdentificarArticuloDeFoto(Cliente Cli);
 
-    void CobrarYDarVuelto (Cliente Cli);
+    bool CobrarYDarVuelto (Cliente Cli, Herramientas_Alquiler HerrAlq, Mercaderia Merc);
 
     float AlquilerHerramienta (Herramientas_Alquiler HerrAlq);
 
-    bool Cambio(Mercaderia merc, Cliente Cli);
 
     float DiferenciaArticulo(Mercaderia merc, Cliente Cli);
 
 
     void set_queArt(string art);
-
     const string get_queArt();
 
 
@@ -55,8 +53,8 @@ public:
     const float get_difArt();
 
 
-    void set_cobrar(float);
-    const float get_cobrar();
+    void set_dinero(float);
+    const float get_dinero();
 
 
     void set_ListaProducts(list <Mercaderia*> MisProductos);
@@ -75,7 +73,7 @@ private:
     string QueArticulo;
     bool CambioArticulo;
     float DiferenciaArt;
-    float totalACobrar;
+    float Dinero;
     list <Mercaderia*> ListaProductos;
 
 };
