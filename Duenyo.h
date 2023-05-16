@@ -29,20 +29,20 @@ public:
     Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos);
     
 
-    void AtenderCliente(Cliente);
+    void AtenderCliente(Cliente Cli);
 
-    bool const IdentificarArticuloDeFoto(Cliente);
+    bool const IdentificarArticuloDeFoto(Cliente Cli);
 
-    void CobrarYDarVuelto (Cliente);
+    void CobrarYDarVuelto (Cliente Cli);
 
-    bool AlquilerHerramienta (Herramientas_Alquiler martillo, Cliente pepe);
+    float AlquilerHerramienta (Herramientas_Alquiler HerrAlq);
 
-    bool Cambio(Mercaderia, Cliente);
+    bool Cambio(Mercaderia merc, Cliente Cli);
 
-    float DiferenciaArticulo(Mercaderia, Cliente);
+    float DiferenciaArticulo(Mercaderia merc, Cliente Cli);
 
 
-    void set_queArt(string);
+    void set_queArt(string art);
 
     const string get_queArt();
 

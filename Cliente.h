@@ -18,7 +18,7 @@ class Cliente: public Persona {
 public:
     
 
- Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata);
+ Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata, bool AlqHerr);
     
 
     void pedirArticulo(bool foto);
@@ -42,6 +42,11 @@ public:
 
     const float get_dinero();
 
+    void set_Alquilo(float AlqHerr);
+
+    const float get_Alquilo();
+
+
     
     ~Cliente();
 
@@ -50,6 +55,7 @@ private:
     bool TengoFoto_oArtRoto;
     list<string> ListaQuiero;
     float dinero;
+    bool alquiler;
 
 };
 

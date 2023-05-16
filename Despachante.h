@@ -20,7 +20,7 @@ class Despachante: public Persona {
 public:
     
 
-Despachante(string nombre , string dni, bool estado);
+Despachante(string nombre, string dni, bool estado);
     
 
     void EntregarPedido(Cliente Cli);
@@ -28,12 +28,6 @@ Despachante(string nombre , string dni, bool estado);
     void set_estadoPedido(bool estado);
 
     const bool get_estadoPedido();
-
-
-    void set_devSeg(bool DevSeg);
-
-    const bool get_devSeg();
-
 
     friend void set_domicilio(string direcc);
 

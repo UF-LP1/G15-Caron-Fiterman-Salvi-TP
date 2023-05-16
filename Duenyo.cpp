@@ -54,11 +54,21 @@ void Duenyo::CobrarYDarVuelto(Cliente Cli) {
     return;
 }
 
-bool Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq, Cliente Cli) {
+float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq) {
 
-    //se devuelve el segururo? get estado
+    float total = 0;
     //calcular cuanto tiempo lo uso y por ende cuanto es el alquiler
-    return false;
+
+    if(HerrAlq.get_condicionArt()==true) {
+        HerrAlq.set_devSeg(true);
+        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio();
+    }
+    else {
+        HerrAlq.set_devSeg(false);
+        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio() + HerrAlq.get_PrecioSeg();
+    }
+
+    return total;
 }
 
 bool Duenyo::Cambio(Mercaderia Merc, Cliente Cli) {
@@ -137,7 +147,6 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
     float presup = 0.0; // Creo contador del presupuesto y lo inicializo
 
     list<Mercaderia*>::iterator it;
-    list<string>:: iterator it2;
     const list<string>& listaQuiero = Cli.get_ListaQueQuiero();
 
     for (it = ListaProductos.begin(); it != ListaProductos.end(); it++) { // Recorro la lista de productos de la ferreteria
@@ -147,6 +156,8 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
             }
         }
     }
+
+    set_cobrar(presup);
 
     return presup; // Devuelvo presup
 }

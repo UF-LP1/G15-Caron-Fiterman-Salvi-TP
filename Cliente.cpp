@@ -10,11 +10,12 @@
  */
 
 
-Cliente::Cliente(string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata) :Persona(nombre,dni) {
+Cliente::Cliente(string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata, bool AlqHerr) :Persona(nombre,dni) {
     this->domicilio=direcc;
     this->TengoFoto_oArtRoto = foto;
     this->ListaQuiero = quiero;
     this->dinero = plata;
+    this->alquiler = AlqHerr;
 }
 
 void Cliente::pedirArticulo(bool foto) {
@@ -61,6 +62,15 @@ void Cliente::set_dinero(float plata){
 
 const float Cliente:: get_dinero(){
     return this->dinero;
+}
+
+void Cliente::set_Alquilo(float AlqHerr){
+    this->alquiler = AlqHerr;
+    return;
+}
+
+const float Cliente:: get_Alquilo(){
+    return this->alquiler;
 }
 
 
