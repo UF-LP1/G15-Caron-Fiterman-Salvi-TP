@@ -47,7 +47,8 @@ void Cliente::set_ListaQueQuiero(list <string> quiero) {
     return;
 }
 
-const list<string> Cliente::get_ListaQueQuiero(){
+
+const list<string>& Cliente::get_ListaQueQuiero() {
     return this->ListaQuiero;
 }
 

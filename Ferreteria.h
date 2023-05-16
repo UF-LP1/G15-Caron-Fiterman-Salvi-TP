@@ -16,7 +16,7 @@ public:
     
     Ferreteria(string nombre);
 
-    static void CartelAbiertoCerrado();
+    static bool CartelAbiertoCerrado();
 
     ~Ferreteria();
 

@@ -2,12 +2,10 @@
  * Project Untitled
  */
 
-
 #ifndef _CLIENTE_H
 #define _CLIENTE_H
 
 #include "Persona.h"
-#include "Mercaderia.h"
 #include <iostream>
 #include <string>
 #include <list>
@@ -38,7 +36,7 @@ public:
 
     void set_ListaQueQuiero(list <string> quiero);
 
-    const list<string> get_ListaQueQuiero();
+    const list<string>& get_ListaQueQuiero();
 
     
     ~Cliente();

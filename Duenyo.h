@@ -9,6 +9,7 @@
 #include "Persona.h"
 #include "Cliente.h"
 #include "Herramientas_Alquiler.h"
+#include "Ferreteria.h"
 #include "Mercaderia.h"
 #include <iostream>
 #include <string>
@@ -20,6 +21,7 @@
 #include <cstdlib>
 using namespace std;
 
+class Cliente; // Declaración anticipada de la clase Cliente
 class Duenyo: public Persona {
 public:
     
@@ -60,9 +62,11 @@ public:
     void set_ListaProducts(list <Mercaderia*> MisProductos);
     const list <Mercaderia*> get_ListaProducts();
 
-    float generarPresupuesto(list<string> ProductsQuiero);
+    float generarPresupuesto(Cliente Cli);
 
     friend class Cliente;
+    friend bool Ferreteria::CartelAbiertoCerrado();
+
 
 
 

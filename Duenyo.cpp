@@ -22,6 +22,15 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 }
 
 void Duenyo::AtenderCliente (Cliente) {
+    bool estado = Ferreteria::CartelAbiertoCerrado();
+    string mensaje = (estado == true) ? "Estamos Abiertos" : "Estamos Cerrados";
+    cout << mensaje << endl;
+
+    if(estado == true){
+        //atiende cliente
+    }
+
+
     return;
 }
 
@@ -36,21 +45,21 @@ const bool Duenyo:: IdentificarArticuloDeFoto(Cliente Cli) {
     // si el cliente trajo foto: cliente le muestra la foto al duenyo y el mismo dice si tiene el acticulo o no
 }
 
-void Duenyo::CobrarYDarVuelto(Cliente) {
+void Duenyo::CobrarYDarVuelto(Cliente Cli) {
 
     return;
 }
 
-bool Duenyo::AlquilerHerramienta(Herramientas_Alquiler, Cliente) {
+bool Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq, Cliente Cli) {
+    return false;
+}
 
-    }
-
-bool Duenyo::Cambio(Mercaderia, Cliente) {
+bool Duenyo::Cambio(Mercaderia Merc, Cliente Cli) {
     return false;
 }
 
 
-float Duenyo::DiferenciaArticulo(Mercaderia, Cliente) {
+float Duenyo::DiferenciaArticulo(Mercaderia Merc, Cliente Cli) {
     return 0.0;
 }
 
@@ -102,6 +111,7 @@ const float Duenyo::get_cobrar() {
 
 void Duenyo:: set_ListaProducts(list <Mercaderia*> MisProductos){
     this->ListaProductos = MisProductos;
+
     return;
 }
 
@@ -109,15 +119,16 @@ const list <Mercaderia*> Duenyo:: get_ListaProducts(){
     return this->ListaProductos;
 }
 
-float Duenyo::generarPresupuesto(list<string> ProductsQuiero) {
+float Duenyo::generarPresupuesto(Cliente Cli) {
     float presup = 0.0; // Creo contador del presupuesto y lo inicializo
 
     list<Mercaderia*>::iterator it;
-    list<string>::iterator it2;
+    list<string>:: iterator it2;
+    const list<string>& listaQuiero = Cli.get_ListaQueQuiero();
 
     for (it = ListaProductos.begin(); it != ListaProductos.end(); it++) { // Recorro la lista de productos de la ferreteria
-        for (it2 = ProductsQuiero.begin(); it2 != ProductsQuiero.end(); it2++) { // Recorro la lista de productos que quiere el cliente
-            if ((*it)->get_nombreMerc() == *it2) { // Si son el mismo producto, sumo el precio al total
+        for (const string& producto : listaQuiero) { // Recorro la lista de productos que quiere el cliente
+            if ((*it)->get_nombreMerc() == producto) { // Si son el mismo producto, sumo el precio al total
                 presup += (*it)->get_Precio();
             }
         }
@@ -126,6 +137,7 @@ float Duenyo::generarPresupuesto(list<string> ProductsQuiero) {
     return presup; // Devuelvo presup
 }
 
+//it2 = listaQuiero.begin(); it2 != listaQuiero.end(); it2++
 
 Duenyo::~Duenyo() {
 

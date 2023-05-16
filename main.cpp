@@ -28,7 +28,9 @@ int main()
 {
 
     cout<<"estan abiertos?"<<endl;
-    Ferreteria::CartelAbiertoCerrado();
+    bool estado = Ferreteria::CartelAbiertoCerrado();
+    string mensaje = (estado == true) ? "Estamos Abiertos" : "Estamos Cerrados";
+    cout << mensaje << endl;
 
 
     list<string> listaCli; //creo la lista que va a llevar el cliente
@@ -69,7 +71,7 @@ int main()
 
     Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
 
-    cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(listaCli) << endl; //llamo a get presupuesto
+    cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(PrimerCliente) << endl; //llamo a get presupuesto
 
 
 
