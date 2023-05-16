@@ -18,16 +18,16 @@ using namespace std;
 
 class Bazar: public Mercaderia {
 public:
-
-    Bazar(float tam, float valor, bool envoltorio,int cant, string nombreBazar);
-
+    
+    Bazar(float tam, float valor, bool envoltorio, int cant, string nombreBazar);
 
     void set_nombreMerc(string &nombreBazar);
 
     const string get_nombreMerc();
 
-    
     ~Bazar();
+
+
 
 private: 
     string tipo_bazar;

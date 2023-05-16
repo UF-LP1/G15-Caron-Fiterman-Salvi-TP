@@ -137,7 +137,6 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
     return presup; // Devuelvo presup
 }
 
-//it2 = listaQuiero.begin(); it2 != listaQuiero.end(); it2++
 
 Duenyo::~Duenyo() {
 
