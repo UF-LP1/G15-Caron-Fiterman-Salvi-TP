@@ -10,14 +10,6 @@
  * Llaves implementation
  */
 
-
-/**
- * @param float
- * @param float
- * @param bool
- * @param bool
- * @param sting
- */
 Llaves::Llaves(float tam, float valor, bool envoltorio,int cant, bool permiso, string nombreLlave)  :Mercaderia(tam,valor,envoltorio, cant), TengoPermisoLlave(permiso){
     this->nombreMercaderia = nombreLlave;
 }

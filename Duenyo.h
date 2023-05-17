@@ -35,7 +35,7 @@ public:
 
     bool CobrarYDarVuelto (Cliente Cli, Herramientas_Alquiler HerrAlq);
 
-    float AlquilerHerramienta (Herramientas_Alquiler HerrAlq);
+    float AlquilerHerramienta (Herramientas_Alquiler HerrAlq, Cliente Cli);
 
 
     float DiferenciaArticulo(Cliente Cli);

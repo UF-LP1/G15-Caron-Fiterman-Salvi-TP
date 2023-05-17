@@ -39,8 +39,8 @@ public:
     void set_dinero(float plata);
     const float get_dinero();
 
-    void set_Alquilo(float AlqHerr);
-    const float get_Alquilo();
+    void set_Alquilo(bool AlqHerr);
+    const bool get_Alquilo();
 
     void set_Cambio(bool Cambio);
     const bool get_Cambio();

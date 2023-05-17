@@ -66,14 +66,16 @@ const float Cliente:: get_dinero(){
     return this->dinero;
 }
 
-void Cliente::set_Alquilo(float AlqHerr){
+
+void Cliente::set_Alquilo(bool AlqHerr){
     this->alquiler = AlqHerr;
     return;
 }
 
-const float Cliente:: get_Alquilo(){
+const bool Cliente:: get_Alquilo(){
     return this->alquiler;
 }
+
 
 void Cliente::set_Cambio(bool Cambio){
     this->cambio = Cambio;
@@ -84,6 +86,7 @@ const bool Cliente:: get_Cambio(){
     return this->cambio;
 }
 
+
 void Cliente::set_PrecioArtViejo(float precioViejoArtic){
     this->precioViejoArt = precioViejoArtic;
     return;
@@ -93,10 +96,12 @@ const float Cliente:: get_PrecioArtViejo(){
     return this->precioViejoArt;
 }
 
+
 void Cliente::set_ArtViejo(string ArtViejo){
     this->artViejo = ArtViejo;
     return;
 }
+
 const string Cliente:: get_ArtViejo(){
     return this->artViejo;
 

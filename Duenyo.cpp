@@ -24,6 +24,7 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 void Duenyo::AtenderCliente (Cliente Client, Herramientas_Alquiler HerrAlquilo) {
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
+    estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
@@ -59,8 +60,10 @@ bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq) {
     float total = 0;
 
     total = total + generarPresupuesto(Cli);
-    total = total + AlquilerHerramienta (HerrAlq);
-    //total = total + DiferenciaArticulo(Cli); //calculo el total de todo
+    total = total + AlquilerHerramienta (HerrAlq, Cli);
+    total = total + DiferenciaArticulo(Cli); //calculo el total de todo
+
+    cout<<"El total es = " << total << endl;
 
     //chequeo que el cliente tenga fondos:
     if(dineroCliente >= total){
@@ -77,18 +80,22 @@ bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq) {
     return estadoPago;
 }
 
-float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq) {
+float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq, Cliente Cli) {
 
     float total = 0;
-    //calcular cuanto tiempo lo uso y por ende cuanto es el alquiler
+    //cuanto tiempo lo uso y por ende cuanto es el alquiler
 
-    if(HerrAlq.get_condicionArt()==true) {
-        HerrAlq.set_devSeg(true);
-        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio() - HerrAlq.get_PrecioSeg(); //si esta en bueas condiciones se devuelve el seguro
-    }
-    else {
-        HerrAlq.set_devSeg(false);
-        total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio(); //si esta en malas condiciones no se devuelve el seguro (no se lo cobra aca porque ya se lo cobran antes)
+    if(Cli.get_Alquilo()==true){ //si alquilo una herramienta
+        if(HerrAlq.get_condicionArt()==true) {
+            HerrAlq.set_devSeg(true);
+            total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio() - HerrAlq.get_PrecioSeg(); //si esta en bueas condiciones se devuelve el seguro
+        }
+        else {
+            HerrAlq.set_devSeg(false);
+            total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio(); //si esta en malas condiciones no se devuelve el seguro (no se lo cobra aca porque ya se lo cobran antes)
+        }
+
+        cout<<"Total precio alquiler Herramientas = "<< total << endl;
     }
 
     return total;
@@ -100,16 +107,19 @@ float Duenyo::DiferenciaArticulo(Cliente Cli) {
     float diferencia = 0;
     float precioViejoArticulo = Cli.get_PrecioArtViejo();
     float precioActualArticulo = 0;
+
     list<Mercaderia*>::iterator it;
     list<Mercaderia*> productos = get_ListaProducts();
-    list<string> listaQuiero = Cli.get_ListaQueQuiero();
 
 
     if (Cli.get_Cambio() == true) {
         for (it = productos.begin(); it != productos.end(); ++it) {
             if(((*it)->get_nombreMerc() == Cli.get_ArtViejo())){
-                precioActualArticulo = (*it)->get_Precio();
-               diferencia = precioActualArticulo- precioViejoArticulo;
+                if((*it)->get_Stock() > 0){ // Chequeo si hay stock
+                    precioActualArticulo = (*it)->get_Precio();
+                    diferencia = precioActualArticulo- precioViejoArticulo;
+                    cout<<"Diferencia de precio = "<< diferencia <<endl;
+                }
             }
         }
     }
@@ -126,7 +136,14 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
     for (it = ListaProductos.begin(); it != ListaProductos.end(); it++) { // Recorro la lista de productos de la ferreteria
         for (const string& producto : listaQuiero) { // Recorro la lista de productos que quiere el cliente
             if ((*it)->get_nombreMerc() == producto) { // Si son el mismo producto, sumo el precio al total
-                presup += (*it)->get_Precio();
+               if((*it)->get_Stock() > 0){ // Chequeo si hay stock
+
+                   presup += (*it)->get_Precio();
+                   *(*it) -= 1; //resto el articulo del stock utilizando sobrecarga
+                   cout<<"Hay stock de "<< producto <<endl;
+               }
+            else
+                   cout<<"No hay stock de "<< producto <<endl;
             }
         }
     }
