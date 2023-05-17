@@ -11,6 +11,7 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <ostream>
 using namespace std;
 
 class Mercaderia {
@@ -44,9 +45,7 @@ public:
 
     const bool get_Envoltorio();
 
-    Mercaderia& operator+=(int cantidad); // Sobrecarga del operador +=
-
-    Mercaderia& operator-=(int cantidad); // Sobrecarga del operador -=
+    friend ostream& operator<<(ostream& os, const Mercaderia& mercaderia);
 
 
     ~Mercaderia();
@@ -56,9 +55,11 @@ protected:
     float Precio;
     bool EnvoltorioArticulo;
     string nombreMercaderia;
-    static int stock;
+    int stock;
     
 
 };
+
+
 
 #endif //_MERCADERIA_H

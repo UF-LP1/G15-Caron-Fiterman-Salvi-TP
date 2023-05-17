@@ -35,7 +35,7 @@ bool Ferreteria::CartelAbiertoCerrado() {
             abierto = true;
     } //abre los dias de semana de 7-13hs y de 17-20hs
 
-    if(horarioDiaSem==6){
+    if(horarioDiaSem == 6){
         if(horarioHora>=8 && horarioHora<=13)
             abierto = true;
     } //abre los sabados de 8-13hs

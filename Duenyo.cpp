@@ -24,12 +24,13 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 void Duenyo::AtenderCliente (Cliente Client, Herramientas_Alquiler HerrAlquilo) {
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    //estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
+    estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
     bool estadoPago;
     if(estadoFerreteria == true){ //si estamos abiertos
+        cout<<"atendiendo a: " << Client.get_nombre()<<endl;
         estadoPago = CobrarYDarVuelto(Client, HerrAlquilo);
         string mensaje2 = (estadoPago == true) ? "Se cobro con exito" : "No se pudo cobrar";
         cout << mensaje2 << endl;
@@ -97,6 +98,9 @@ float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq, Cliente Cli) {
 
         cout<<"Total precio alquiler Herramientas = "<< total << endl;
     }
+    else
+            cout<<"No se Alquilo Herramienta"<< endl;
+
 
     return total;
 }
@@ -110,7 +114,7 @@ float Duenyo::DiferenciaArticulo(Cliente Cli) {
 
     list<Mercaderia*>::iterator it;
     list<Mercaderia*> productos = get_ListaProducts();
-
+    int stockActual;
 
     if (Cli.get_Cambio() == true) {
         for (it = productos.begin(); it != productos.end(); ++it) {
@@ -119,6 +123,8 @@ float Duenyo::DiferenciaArticulo(Cliente Cli) {
                     precioActualArticulo = (*it)->get_Precio();
                     diferencia = precioActualArticulo- precioViejoArticulo;
                     cout<<"Diferencia de precio = "<< diferencia <<endl;
+                    stockActual = (*it)->get_Stock() -1;
+                    (*it)->set_Stock(stockActual); //resto el articulo del stock
                 }
             }
         }
@@ -132,6 +138,7 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
 
     list<Mercaderia*>::iterator it;
     const list<string>& listaQuiero = Cli.get_ListaQueQuiero();
+    int stockActual;
 
     for (it = ListaProductos.begin(); it != ListaProductos.end(); it++) { // Recorro la lista de productos de la ferreteria
         for (const string& producto : listaQuiero) { // Recorro la lista de productos que quiere el cliente
@@ -139,9 +146,12 @@ float Duenyo::generarPresupuesto(Cliente Cli) {
                if((*it)->get_Stock() > 0){ // Chequeo si hay stock
 
                    presup += (*it)->get_Precio();
-                   *(*it) -= 1; //resto el articulo del stock utilizando sobrecarga
+                   stockActual = (*it)->get_Stock() -1;
+                   (*it)->set_Stock(stockActual); //resto el articulo del stock
                    cout<<"Hay stock de "<< producto <<endl;
-               }
+                   cout << **it << endl; // Imprimir el objeto Mercaderia mediante sobrecarga
+                }
+
             else
                    cout<<"No hay stock de "<< producto <<endl;
             }

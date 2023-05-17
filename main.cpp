@@ -7,6 +7,7 @@
 #include <stack>
 #include <QDateTime>
 #include <algorithm>
+#include <ostream>
 
 
 #include "Bazar.h"
@@ -75,10 +76,10 @@ int main()
     Electricidad Cable(30.0,600.0,true, 2, "cable");
     Rubro Martillo(30.0,600.0,true,20, "martillo");
     Rubro Tornillo(2.0,100.0,true, 5, "tornillo");
-    Rubro Portalamparas(2.0,100.0,true, 5, "portalámparas");
-    Rubro Enchufe(2.0,100.0,true, 5, "enchufe");
-    Rubro Tarugo(2.0,100.0,true, 5, "tarugo");
-    Rubro Mecha(2.0,100.0,true, 5, "mecha");
+    Rubro Portalamparas(2.0,1000.0,true, 5, "portalámparas");
+    Rubro Enchufe(2.0,130.0,true, 5, "enchufe");
+    Rubro Tarugo(2.0,30.0,true, 5, "tarugo");
+    Rubro Mecha(2.0,340.0,true, 5, "mecha");
 
     MiMercaderia.push_front(&Soga); //añadimos a MiMercaderia los articulos
     MiMercaderia.push_front(&Tender);// (sabemos que podriamos haberlos creado aca directamente pero nos es mas comodo asi :) )

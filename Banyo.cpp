@@ -26,7 +26,6 @@ const string Banyo::get_nombreMerc() {
     return this->nombreMercaderia;
 }
 
-
 Banyo::~Banyo() {
 
 }

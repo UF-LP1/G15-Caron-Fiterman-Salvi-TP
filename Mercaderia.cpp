@@ -92,21 +92,18 @@ const int Mercaderia::get_Stock() {
    return this->stock;
 }
 
+ostream& operator<<(ostream& os, const Mercaderia& mercaderia) {
+   os << "Nombre: " << mercaderia.nombreMercaderia << std::endl;
+   os << "Tamaño: " << mercaderia.Tamanyo << std::endl;
+   os << "Precio: " << mercaderia.Precio << std::endl;
+   os << "Envoltorio: " << (mercaderia.EnvoltorioArticulo ? "Sí" : "No") << std::endl;
+   os << "Stock: " << mercaderia.stock << std::endl;
+   return os;
+}
 
 Mercaderia::~Mercaderia() {
 
 }
 
-int Mercaderia::stock = 10; //dejamos como base que hay 10 de cada item :)
 
 
-Mercaderia& Mercaderia::operator+=(int cantidad) {
-   stock += cantidad;
-   return *this;
-} // Sobrecarga del operador += (suma la cantidad que quiero al stock)
-
-
-Mercaderia& Mercaderia::operator-=(int cantidad) {
-   stock -= cantidad;
-   return *this;
-} // Sobrecarga del operador -= (resta la cantidad que quiero del stock)
