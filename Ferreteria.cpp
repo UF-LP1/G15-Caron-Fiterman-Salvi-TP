@@ -28,7 +28,7 @@ bool Ferreteria::CartelAbiertoCerrado() {
     int horarioDiaSem = dateTime.date().day();
     int horarioHora = dateTime.time().hour();
 
-    bool abierto = true;
+    bool abierto = false;
 
     if(horarioDiaSem>=1 && horarioDiaSem<=5){
         if((horarioHora>=7 && horarioHora<=13) || (horarioHora>=17 && horarioHora<=20))

@@ -71,10 +71,15 @@ int main()
     cout<<"First element lista mercaderia: "<< MiMercaderia.front()->get_nombreMerc() << endl; //chequeo
     cout<<"Last element lista mercaderia: "<< MiMercaderia.back()->get_nombreMerc() << endl;
 
+    Herramientas_Alquiler herramientaAlq(true, "martillo",true, 1500.0, 3.0, 450.0);
 
-   Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
+    Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
+    //pruebo todo:
+    Cindy.AtenderCliente(PrimerCliente, herramientaAlq);
 
-    cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(PrimerCliente) << endl; //llamo a get presupuesto
+      //probar funcion presupuesto:
+    //cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(PrimerCliente) << endl; //llamo a get presupuesto
+
 
     //try catchs!
 
@@ -90,7 +95,8 @@ int main()
         listaCli.push_back("cable");
         listaCli.push_back("virulana");
         listaCli.push_back("soga");
-    } catch (runtime_error& e) {
+    }
+    catch (runtime_error& e) {
         cout << "error: " << e.what() << endl;
     }
 
