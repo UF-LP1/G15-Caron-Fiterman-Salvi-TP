@@ -4,7 +4,8 @@
 
 
 #include "Duenyo.h"
-#include <Herramientas_Alquiler.h>
+#include "Herramientas_Alquiler.h"
+#include "customExceptions.h"
 
 /**
  * Duenyo implementation
@@ -24,7 +25,7 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 void Duenyo::AtenderCliente (Cliente Client, Herramientas_Alquiler HerrAlquilo) {
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
+    //estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
@@ -217,4 +218,11 @@ const list <Mercaderia*> Duenyo:: get_ListaProducts(){
 
 Duenyo::~Duenyo() {
 
+}
+
+void Duenyo::imprimirStock(list <Mercaderia*> MisProductos){
+    list<Mercaderia*>::iterator it;
+    for (it = MisProductos.begin(); it != MisProductos.end(); it++) {
+        cout << *(*it) << endl;
+    }
 }

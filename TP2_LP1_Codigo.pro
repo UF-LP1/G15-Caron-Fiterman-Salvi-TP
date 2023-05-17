@@ -21,6 +21,7 @@ SOURCES += \
        Persona.cpp \
        Plomero.cpp \
        Rubro.cpp \
+    customeExceptions.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -42,4 +43,5 @@ HEADERS += \
    Mercaderia.h \
    Persona.h \
    Plomero.h \
-   Rubro.h
+   Rubro.h \
+   customExceptions.h

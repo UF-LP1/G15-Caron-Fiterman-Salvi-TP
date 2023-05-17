@@ -4,6 +4,7 @@
 
 
 #include "Cerrajero.h"
+#include "Ferreteria.h"
 
 /**
  * Cerrajero implementation
@@ -25,16 +26,24 @@ void Cerrajero::set_tipoDeLlave(string llave) {
 }
 
 bool Cerrajero::HacerCopiaLlave(Llaves llave) {
-
+    bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
+    string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
+    cout << mensaje << endl;
     bool copia = false;
-    if(llave.get_nombreMerc() == "Llave Codificada"){
-        if(llave.get_TengoPermisoLlave() == true){
-            copia = true;
+
+    if(estadoFerreteria == true){ //si estamos abiertos
+        if(llave.get_nombreMerc() == "Llave Codificada"){
+            if(llave.get_TengoPermisoLlave() == true){
+                copia = true;
+            }
         }
+
+        else if (llave.get_nombreMerc() != "Llave Codificada")
+            copia = true;
     }
 
-    else
-        copia = true;
+
+
 
     return copia;
 }

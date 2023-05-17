@@ -60,7 +60,10 @@ public:
     void set_ListaProducts(list <Mercaderia*> MisProductos);
     const list <Mercaderia*> get_ListaProducts();
 
+
     float generarPresupuesto(Cliente Cli);
+
+    static void imprimirStock(list <Mercaderia*> MisProductos);
 
     friend class Cliente;
     friend bool Ferreteria::CartelAbiertoCerrado();
@@ -77,5 +80,6 @@ private:
     list <Mercaderia*> ListaProductos;
 
 };
+
 
 #endif //_DUENYO_H

@@ -24,8 +24,7 @@ bool Ferreteria::CartelAbiertoCerrado() {
 
     QDateTime dateTime = QDateTime::currentDateTime();//hora actual
 
-
-    int horarioDiaSem = dateTime.date().day();
+    int horarioDiaSem = dateTime.date().dayOfWeek();
     int horarioHora = dateTime.time().hour();
 
     bool abierto = false;

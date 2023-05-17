@@ -96,7 +96,7 @@ ostream& operator<<(ostream& os, const Mercaderia& mercaderia) {
    os << "Nombre: " << mercaderia.nombreMercaderia << std::endl;
    os << "Tamaño: " << mercaderia.Tamanyo << std::endl;
    os << "Precio: " << mercaderia.Precio << std::endl;
-   os << "Envoltorio: " << (mercaderia.EnvoltorioArticulo ? "Sí" : "No") << std::endl;
+   os << "Estado Envoltorio: " << (mercaderia.EnvoltorioArticulo ? "Bueno" : "Malo") << std::endl;
    os << "Stock: " << mercaderia.stock << std::endl;
    return os;
 }
