@@ -10,6 +10,10 @@
 #include "Cliente.h"
 #include "Herramientas_Alquiler.h"
 #include "Ferreteria.h"
+#include "customExceptions.h"
+#include "Cerrajero.h"
+#include "Despachante.h"
+#include "Plomero.h"
 #include "Mercaderia.h"
 #include <iostream>
 #include <string>
@@ -26,16 +30,16 @@ class Duenyo: public Persona {
 public:
     
 
-    Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float dinero, list <Mercaderia*> MisProductos);
+    Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float dinero, list <Mercaderia*> MisProductos, list <Herramientas_Alquiler*> MisHerras);
     
 
-    void AtenderCliente(Cliente Client, Herramientas_Alquiler HerrAlquilo);
+    void AtenderCliente(Cliente Client); //AtenderCliente (Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache)
 
     bool const IdentificarArticuloDeFoto(Cliente Cli);
 
-    bool CobrarYDarVuelto (Cliente Cli, Herramientas_Alquiler HerrAlq);
+    bool CobrarYDarVuelto (Cliente Cli);
 
-    float AlquilerHerramienta (Herramientas_Alquiler HerrAlq, Cliente Cli);
+    float AlquilerHerramienta (Cliente Cli);
 
 
     float DiferenciaArticulo(Cliente Cli);
@@ -60,6 +64,9 @@ public:
     void set_ListaProducts(list <Mercaderia*> MisProductos);
     const list <Mercaderia*> get_ListaProducts();
 
+    void set_ListaHerramientas(list <Herramientas_Alquiler*> MisHerras);
+    const list <Herramientas_Alquiler*> get_ListaHerramientas();
+
 
     float generarPresupuesto(Cliente Cli);
 
@@ -67,7 +74,9 @@ public:
 
     friend class Cliente;
     friend bool Ferreteria::CartelAbiertoCerrado();
-
+    friend class Plomero;
+    friend class Cerrajero;
+    friend class Despachante;
 
 
 
@@ -78,6 +87,8 @@ private:
     float DiferenciaArt;
     float Dinero;
     list <Mercaderia*> ListaProductos;
+    list <Herramientas_Alquiler*> ListaHerramientas;
+
 
 };
 

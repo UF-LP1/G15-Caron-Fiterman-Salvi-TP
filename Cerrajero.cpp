@@ -4,7 +4,7 @@
 
 
 #include "Cerrajero.h"
-#include "Ferreteria.h"
+
 
 /**
  * Cerrajero implementation
@@ -25,7 +25,7 @@ void Cerrajero::set_tipoDeLlave(string llave) {
     return;
 }
 
-bool Cerrajero::HacerCopiaLlave(Llaves llave) {
+bool Cerrajero::HacerCopiaLlave(Llaves llave, Cliente Cli) {
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;

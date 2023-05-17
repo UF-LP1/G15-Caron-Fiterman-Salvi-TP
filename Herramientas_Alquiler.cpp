@@ -17,7 +17,6 @@ Herramientas_Alquiler::Herramientas_Alquiler(bool condicion, string tipoHerr, bo
     this->tiempoUso = TiempoUso;
     this->PrecioSeguro = PrecioSeguro;
 
-
 }
 
 
@@ -74,6 +73,7 @@ void Herramientas_Alquiler::set_PrecioSeg(float PrecioSeguro){
     this->PrecioSeguro = PrecioSeguro;
     return;
 }
+
 
 Herramientas_Alquiler::~Herramientas_Alquiler() {
 }

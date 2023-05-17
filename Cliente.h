@@ -19,7 +19,7 @@ class Cliente: public Persona {
 public:
     
 
- Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata, bool AlqHerr, bool Cambio, float precioViejoArtic, string ArtViejo);
+ Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata, bool AlqHerr, string herrAlq, bool Cambio, float precioViejoArtic, string ArtViejo, bool cerrajero, string tipoLlave, bool despachante, bool plomero);
     
 
     void pedirArticulo(bool foto);
@@ -42,6 +42,9 @@ public:
     void set_Alquilo(bool AlqHerr);
     const bool get_Alquilo();
 
+    void set_HerrAlq(string herrAlq);
+    const string get_HerrAlq();
+
     void set_Cambio(bool Cambio);
     const bool get_Cambio();
 
@@ -51,6 +54,19 @@ public:
     void set_ArtViejo(string ArtViejo);
     const string get_ArtViejo();
     
+
+    void set_cerrajero(bool cerrajero);
+    const bool get_cerrajero();
+
+    void set_despachante(bool despachante);
+    const bool get_despachante();
+
+    void set_plomero(bool plomero);
+    const bool get_plomero();
+
+    void set_tipoLlave(string Llavecita);
+    const string get_tipoLlave();
+
     ~Cliente();
 
 private: 
@@ -59,9 +75,14 @@ private:
     list<string> ListaQuiero;
     float dinero;
     bool alquiler;
+    string HerrAlq;
     bool cambio;
     float precioViejoArt;
     string artViejo;
+    bool NecesitoCerrajero;
+    string tipoLlave;
+    bool NecesitoDespachante;
+    bool NecesitoPlomero;
 
 };
 

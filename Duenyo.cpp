@@ -4,42 +4,47 @@
 
 
 #include "Duenyo.h"
-#include "Herramientas_Alquiler.h"
-#include "customExceptions.h"
+
 
 /**
  * Duenyo implementation
  */
 
 
-Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos) :Persona(nombre,dni) {
+Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float TotCobrar, list <Mercaderia*> MisProductos, list <Herramientas_Alquiler*> MisHerras) :Persona(nombre,dni) {
     this->QueArticulo = art;
     this->CambioArticulo = cambioArt;
     this->DiferenciaArt = difArt;
     this->Dinero = TotCobrar;
     this->ListaProductos = MisProductos;
+    this->ListaHerramientas = MisHerras;
 
 
 }
 
-void Duenyo::AtenderCliente (Cliente Client, Herramientas_Alquiler HerrAlquilo) {
+void Duenyo::AtenderCliente (Cliente Client) { //AtenderCliente (Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache)
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
+    //estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
+    /*if(Client.get_cerrajero()){
+
+    }
+
+    */
+
     bool estadoPago;
     if(estadoFerreteria == true){ //si estamos abiertos
-        cout<<"atendiendo a: " << Client.get_nombre()<<endl;
+        cout<<"Atendiendo a: " << Client.get_nombre()<<endl;
         try {
-                estadoPago = CobrarYDarVuelto(Client, HerrAlquilo);
+                estadoPago = CobrarYDarVuelto(Client);
         }
         catch (NoFondos  &e) {
             cout<< e.what()<< endl;
             return;
         }
-
 
         string mensaje2 = (estadoPago == true) ? "Se cobro con exito" : "No se pudo cobrar";
         cout << mensaje2 << endl;
@@ -59,7 +64,7 @@ const bool Duenyo:: IdentificarArticuloDeFoto(Cliente Cli) {
     // si el cliente trajo foto: cliente le muestra la foto al duenyo y el mismo dice si tiene el acticulo o no
 }
 
-bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq) {
+bool Duenyo::CobrarYDarVuelto(Cliente Cli) {
 
     bool estadoPago = false;
     float dineroCaja;
@@ -70,7 +75,7 @@ bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq) {
     float total = 0;
 
     total = total + generarPresupuesto(Cli);
-    total = total + AlquilerHerramienta (HerrAlq, Cli);
+    total = total + AlquilerHerramienta(Cli);
     total = total + DiferenciaArticulo(Cli); //calculo el total de todo
 
     cout<<"El total es = " << total << endl;
@@ -95,26 +100,29 @@ bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq) {
     return estadoPago;
 }
 
-float Duenyo::AlquilerHerramienta(Herramientas_Alquiler HerrAlq, Cliente Cli) {
+float Duenyo::AlquilerHerramienta(Cliente Cli) {
 
     float total = 0;
-    //cuanto tiempo lo uso y por ende cuanto es el alquiler
+    list<Herramientas_Alquiler*>::iterator it;
+    string HerrCli = Cli.get_HerrAlq();
+    //cuanto tiempo lo uso y por ende cuanto es el alquiler   
 
-    if(Cli.get_Alquilo()==true){ //si alquilo una herramienta
-        if(HerrAlq.get_condicionArt()==true) {
-            HerrAlq.set_devSeg(true);
-            total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio() - HerrAlq.get_PrecioSeg(); //si esta en bueas condiciones se devuelve el seguro
-        }
-        else {
-            HerrAlq.set_devSeg(false);
-            total = HerrAlq.get_tiempoUso() * HerrAlq.get_precio(); //si esta en malas condiciones no se devuelve el seguro (no se lo cobra aca porque ya se lo cobran antes)
+    if(Cli.get_Alquilo()){ //si alquilo una herramienta
+        for (it = ListaHerramientas.begin(); it != ListaHerramientas.end(); it++){
+            if((*it)->get_tipoHerrAlq() == HerrCli){
+
+                (*it)->set_devSeg(true);
+                total = (*it)->get_tiempoUso() * (*it)->get_precio() - (*it)->get_PrecioSeg(); //si esta en bueas condiciones se devuelve el seguro
+            }
+
+            else{
+                (*it)->set_devSeg(false);
+                total = (*it)->get_tiempoUso() * (*it)->get_precio(); //si esta en malas condiciones no se devuelve el seguro (no se lo cobra aca porque ya se lo cobran antes)
+            }
+
         }
 
-        cout<<"Total precio alquiler Herramientas = "<< total << endl;
     }
-    else
-            cout<<"No se Alquilo Herramienta"<< endl;
-
 
     return total;
 }
@@ -227,6 +235,14 @@ const list <Mercaderia*> Duenyo:: get_ListaProducts(){
     return this->ListaProductos;
 }
 
+void Duenyo::set_ListaHerramientas(list <Herramientas_Alquiler*> MisHerras){
+    this->ListaHerramientas = MisHerras;
+    return;
+}
+
+const list <Herramientas_Alquiler*> Duenyo:: get_ListaHerramientas(){
+     return this->ListaHerramientas;
+}
 
 
 Duenyo::~Duenyo() {

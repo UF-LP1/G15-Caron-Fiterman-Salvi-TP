@@ -8,6 +8,7 @@
 
 #include "Persona.h"
 #include "Cliente.h"
+#include "Ferreteria.h"
 #include <iostream>
 #include <string>
 #include <list>

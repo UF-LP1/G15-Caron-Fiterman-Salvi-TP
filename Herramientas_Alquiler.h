@@ -20,6 +20,7 @@ public:
     Herramientas_Alquiler(bool condicion, string tipoHerr, bool DevSeg, float precio, float TiempoUso, float PrecioSeguro);
 
     const string get_tipoHerrAlq();
+
     void set_tipoHerrAlq(string tipoHerr);
 
     const bool get_condicionArt();
@@ -37,7 +38,6 @@ public:
 
     const float get_PrecioSeg();
     void set_PrecioSeg(float PrecioSeguro);
-
 
 
     

@@ -50,7 +50,7 @@ int main()
     cout<<"First element lista cliente: "<< listaPrimCli.front() << endl; //chequeo
     cout<<"Last element lista cliente: "<< listaPrimCli.back() << endl;
 
-    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaPrimCli, 2000000, false, true, 150, "martillo"); //creo cliente, le paso la lista
+    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaPrimCli, 2000000, false, "amoladora", true, 150, "martillo", true, "Llave Codificada",false, false); //creo cliente, le paso la lista
 
 
     //creo mi segundo cliente
@@ -65,8 +65,18 @@ int main()
     listaSegCli.push_back("mecha");
 
 
-    Cliente SegundoCliente("Juana", "36843346", "villa Crespo", true, listaSegCli, 240, true, false, 0, "null");//creo al cliente, le paso la lista
+    Cliente SegundoCliente("Juana", "36843346", "villa Crespo", true, listaSegCli, 240, true, "sierra", false, 0, "null", false,"null", true, false);//creo al cliente, le paso la lista
 
+    //creo mi tercer cliente
+
+    list<string> listaTerCli;
+    listaTerCli.push_back("lampara");
+    listaTerCli.push_back("cable");
+    listaTerCli.push_back("portalámparas");
+    listaTerCli.push_back("tender");
+
+
+    Cliente TercerCliente("Abril", "368644679", "Recoleta", false, listaTerCli, 10000000000000, false, "perforadora", false, 50, "tornillo", false,"null", false, true);//creo al cliente, le paso la lista
 
     list<Mercaderia*> MiMercaderia; //creo una lista de mercaderia
 
@@ -104,17 +114,30 @@ int main()
     Duenyo::imprimirStock(MiMercaderia);
 
 
-    Herramientas_Alquiler herramientaAlq(true, "amoladora",true, 1500.0, 3.0, 450.0);
+    list<Herramientas_Alquiler*> HerrAql; //creo una lista de mercaderia
 
-    Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
+    Herramientas_Alquiler Amoladora(true, "amoladora",true, 1500.0, 3.0, 450.0);
+    Herramientas_Alquiler Lijadora(true, "lijadora",true, 1500.0, 3.0, 450.0);
+    Herramientas_Alquiler Perforadora(true, "perforadora",true, 1500.0, 3.0, 450.0);
+    Herramientas_Alquiler Sierra(true, "sierra",true, 1500.0, 3.0, 450.0);
+
+
+    HerrAql.push_front(&Amoladora);
+    HerrAql.push_front(&Lijadora);
+    HerrAql.push_front(&Perforadora);
+    HerrAql.push_front(&Sierra);
+
+    Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia, HerrAql);  //creo dueño, le paso la lista de MiMercaderia
 
     //pruebo todo:
-    Cindy.AtenderCliente(PrimerCliente, herramientaAlq);
-    Cindy.AtenderCliente(SegundoCliente, herramientaAlq);
+    Cindy.AtenderCliente(PrimerCliente);
+    Cindy.AtenderCliente(SegundoCliente);
+    Cindy.AtenderCliente(TercerCliente);
 
 
-    Despachante Despache ("Raul", "36863357", false);
-    Despache.EntregarPedido(PrimerCliente);
+
+    //Despachante Despache ("Raul", "36863357", false);
+   // Despache.EntregarPedido(PrimerCliente);
 
     /*para probar funcion presupuesto:
      *
@@ -122,27 +145,6 @@ int main()
      *
      */
 
-    //try catchs!
-
-    /*
-     *
-    try {
-        if (listaCli.size() >= 5) {
-            throw runtime_error("No hay suficiente espacio disponible");
-        }
-
-        listaCli.push_back("tornillo");
-        listaCli.push_back("lampara");
-        listaCli.push_back("cable");
-        listaCli.push_back("virulana");
-        listaCli.push_back("soga");
-    }
-    catch (runtime_error& e) {
-        cout << "error: " << e.what() << endl;
-    }
-
-    *
-    */
 
 
     return 0;

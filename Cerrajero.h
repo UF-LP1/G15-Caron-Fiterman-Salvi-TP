@@ -9,6 +9,7 @@
 #include "Persona.h"
 #include "Cliente.h"
 #include "Mercaderia.h"
+#include "Ferreteria.h"
 #include "Llaves.h"
 #include <iostream>
 #include <string>
@@ -25,7 +26,7 @@ public:
     Cerrajero(string nombre, string dni, string llave);
 
 
-    bool HacerCopiaLlave(Llaves llave);
+    bool HacerCopiaLlave(Llaves llave, Cliente Cli);
 
     const string get_tipoDeLlave();
 
