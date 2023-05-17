@@ -6,6 +6,7 @@
 #define _CLIENTE_H
 
 #include "Persona.h"
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <list>
@@ -18,7 +19,7 @@ class Cliente: public Persona {
 public:
     
 
- Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata, bool AlqHerr, bool Cambio, float precioViejoArtic);
+ Cliente (string nombre, string dni, string direcc, bool foto, list <string> quiero, float plata, bool AlqHerr, bool Cambio, float precioViejoArtic, string ArtViejo);
     
 
     void pedirArticulo(bool foto);
@@ -46,6 +47,9 @@ public:
 
     void set_PrecioArtViejo(float precioViejoArtic);
     const float  get_PrecioArtViejo();
+
+    void set_ArtViejo(string ArtViejo);
+    const string get_ArtViejo();
     
     ~Cliente();
 
@@ -57,6 +61,7 @@ private:
     bool alquiler;
     bool cambio;
     float precioViejoArt;
+    string artViejo;
 
 };
 

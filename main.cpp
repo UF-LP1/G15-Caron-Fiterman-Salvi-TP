@@ -6,6 +6,8 @@
 #include <queue>
 #include <stack>
 #include <QDateTime>
+#include <algorithm>
+
 
 #include "Bazar.h"
 #include "Banyo.h"
@@ -44,7 +46,8 @@ int main()
     cout<<"First element lista cliente: "<< listaCli.front() << endl; //chequeo
     cout<<"Last element lista cliente: "<< listaCli.back() << endl;
 
-    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaCli, 2000000, false, false, 150); //creo cliente, le paso la lista
+
+    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaCli, 2000000, false, true, 150, "martillo"); //creo cliente, le paso la lista
 
     list<Mercaderia*> MiMercaderia; //creo una lista de mercaderia
 
@@ -69,12 +72,30 @@ int main()
     cout<<"Last element lista mercaderia: "<< MiMercaderia.back()->get_nombreMerc() << endl;
 
 
-    Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
+   Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia);  //creo dueño, le paso la lista de MiMercaderia
 
     cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(PrimerCliente) << endl; //llamo a get presupuesto
 
+    //try catchs!
 
+    /*
+     *
+    try {
+        if (listaCli.size() >= 5) {
+            throw runtime_error("No hay suficiente espacio disponible");
+        }
 
+        listaCli.push_back("tornillo");
+        listaCli.push_back("lampara");
+        listaCli.push_back("cable");
+        listaCli.push_back("virulana");
+        listaCli.push_back("soga");
+    } catch (runtime_error& e) {
+        cout << "error: " << e.what() << endl;
+    }
+
+    *
+    */
 
 
     return 0;
