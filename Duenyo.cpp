@@ -24,7 +24,7 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 void Duenyo::AtenderCliente (Cliente Client, Herramientas_Alquiler HerrAlquilo) {
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
+    //estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
