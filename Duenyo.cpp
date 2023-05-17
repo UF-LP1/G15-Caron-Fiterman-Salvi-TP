@@ -25,14 +25,22 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 void Duenyo::AtenderCliente (Cliente Client, Herramientas_Alquiler HerrAlquilo) {
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    //estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
+    estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
     bool estadoPago;
     if(estadoFerreteria == true){ //si estamos abiertos
         cout<<"atendiendo a: " << Client.get_nombre()<<endl;
-        estadoPago = CobrarYDarVuelto(Client, HerrAlquilo);
+        try {
+                estadoPago = CobrarYDarVuelto(Client, HerrAlquilo);
+        }
+        catch (NoFondos  &e) {
+            cout<< e.what()<< endl;
+            return;
+        }
+
+
         string mensaje2 = (estadoPago == true) ? "Se cobro con exito" : "No se pudo cobrar";
         cout << mensaje2 << endl;
     }
@@ -77,6 +85,11 @@ bool Duenyo::CobrarYDarVuelto(Cliente Cli, Herramientas_Alquiler HerrAlq) {
 
         estadoPago = true;
     }
+
+    if(estadoPago == false){
+        throw NoFondos();
+    }
+
     //si el cliente no tiene suficiente dinero el pago no se puede efectuar
 
     return estadoPago;

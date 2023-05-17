@@ -5,7 +5,9 @@
 using namespace std;
 
 class NoFondos :public exception {
+public:
     const char* what() const throw();
+
 };
 
 #endif // CUSTOMEXCEPTIONS_H

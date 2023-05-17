@@ -24,6 +24,8 @@
 #include "Persona.h"
 #include "Plomero.h"
 #include "Rubro.h"
+#include "customExceptions.h"
+
 using namespace std;
 
 

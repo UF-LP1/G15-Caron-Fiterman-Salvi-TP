@@ -35,11 +35,16 @@ bool Cerrajero::HacerCopiaLlave(Llaves llave) {
         if(llave.get_nombreMerc() == "Llave Codificada"){
             if(llave.get_TengoPermisoLlave() == true){
                 copia = true;
+                cout << "Aqui tienes la copia <3" << endl;
             }
+
+            else
+               cout << "No tengo permiso para hacer la copia" << endl;
         }
 
         else if (llave.get_nombreMerc() != "Llave Codificada")
             copia = true;
+            cout << "Aqui tienes la copia <3" << endl;
     }
 
 
