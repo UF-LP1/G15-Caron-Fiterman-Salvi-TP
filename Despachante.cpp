@@ -17,22 +17,18 @@ Despachante::Despachante(string nombre , string dni, bool estado) :Persona(nombr
 
 
 void Despachante::EntregarPedido(Cliente Cli) {
-    bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados, no puedo entregar pedido";
-    cout << mensaje << endl;
 
-    if(estadoFerreteria == true){ //si estamos abiertos
-        bool entregado = false; //se puedo entregar el paaquete?
-        entregado = rand()% (0-1)+1;
-        if(entregado == true){
-            cout<<"el pedido fue entregado en "<<Cli.get_domicilio()<<endl;
-            this->estadoPedido = true;
-        }
-        else{
-            this->estadoPedido = false;
-            cout<<"el pedido no fue entregado en"<<Cli.get_domicilio()<<endl;
-        }
+    bool entregado = false; //se puedo entregar el paaquete?
+    entregado = rand()% (0-1)+1;
+    if(entregado == true){
+        cout<<"el pedido fue entregado en "<<Cli.get_domicilio()<<endl;
+        this->estadoPedido = true;
     }
+    else{
+        this->estadoPedido = false;
+        cout<<"el pedido no fue entregado en"<<Cli.get_domicilio()<<endl;
+    }
+
     return;
 }
 

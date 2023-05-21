@@ -50,7 +50,7 @@ int main()
     cout<<"First element lista cliente: "<< listaPrimCli.front() << endl; //chequeo
     cout<<"Last element lista cliente: "<< listaPrimCli.back() << endl;
 
-    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaPrimCli, 2000000, false, "amoladora", true, 150, "martillo", true, "Llave Codificada",false, false); //creo cliente, le paso la lista
+    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaPrimCli, 2000000, false, "amoladora", true, 150, "martillo", true, "Llave Magnetica",false, false); //creo cliente, le paso la lista
 
 
     //creo mi segundo cliente
@@ -65,7 +65,7 @@ int main()
     listaSegCli.push_back("mecha");
 
 
-    Cliente SegundoCliente("Juana", "36843346", "villa Crespo", true, listaSegCli, 240, true, "sierra", false, 0, "null", false,"null", true, false);//creo al cliente, le paso la lista
+    Cliente SegundoCliente("Juana", "36843346", "villa Crespo", true, listaSegCli, 240, true, "sierra", false, 0, "null", true,"Llave Simple", true, false);//creo al cliente, le paso la lista
 
     //creo mi tercer cliente
 
@@ -114,7 +114,7 @@ int main()
     Duenyo::imprimirStock(MiMercaderia);
 
 
-    list<Herramientas_Alquiler*> HerrAql; //creo una lista de mercaderia
+    list<Herramientas_Alquiler*> HerrAql; //creo una lista de herramientas de alquiler
 
     Herramientas_Alquiler Amoladora(true, "amoladora",true, 1500.0, 3.0, 450.0);
     Herramientas_Alquiler Lijadora(true, "lijadora",true, 1500.0, 3.0, 450.0);
@@ -127,23 +127,33 @@ int main()
     HerrAql.push_front(&Perforadora);
     HerrAql.push_front(&Sierra);
 
+
+    list<Llaves*> listaDeLlaves; //creo una lista de llaves
+    Llaves LlaveSimple(20,250,false,6,false,"Llave Simple");
+    Llaves DobleTambor(20,250,true,6,true,"Llave Doble Tambor");
+    Llaves Codificada(20,250,true,6,true,"Llave Codificada");
+    Llaves Magnetica(20,250,true,6,true,"Llave Magnetica");
+
+    listaDeLlaves.push_front(&LlaveSimple);
+    listaDeLlaves.push_front(&DobleTambor);
+    listaDeLlaves.push_front(&Codificada);
+    listaDeLlaves.push_front(&Magnetica);
+
+
+
+    Despachante Despache ("Raul", "36863357", false);
+    Plomero plomero ("Juan Carlos", "46824468", true);
+    Cerrajero cerrajero("Diego", "36872496", listaDeLlaves);
+
     Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia, HerrAql);  //creo dueño, le paso la lista de MiMercaderia
 
     //pruebo todo:
-    Cindy.AtenderCliente(PrimerCliente);
-    Cindy.AtenderCliente(SegundoCliente);
-    Cindy.AtenderCliente(TercerCliente);
+    Cindy.AtenderCliente(PrimerCliente, cerrajero, plomero, Despache);
+    Cindy.AtenderCliente(SegundoCliente, cerrajero, plomero, Despache);
+    Cindy.AtenderCliente(TercerCliente, cerrajero, plomero, Despache);
 
+    //Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache
 
-
-    //Despachante Despache ("Raul", "36863357", false);
-   // Despache.EntregarPedido(PrimerCliente);
-
-    /*para probar funcion presupuesto:
-     *
-     * cout<<"El Presupuesto es: "<< Cindy.generarPresupuesto(PrimerCliente) << endl; //llamo a get presupuesto
-     *
-     */
 
 
 

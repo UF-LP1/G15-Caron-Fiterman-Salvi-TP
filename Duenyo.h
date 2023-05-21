@@ -33,7 +33,7 @@ public:
     Duenyo(string nombre, string dni, string art, bool cambioArt, float difArt, float dinero, list <Mercaderia*> MisProductos, list <Herramientas_Alquiler*> MisHerras);
     
 
-    void AtenderCliente(Cliente Client); //AtenderCliente (Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache)
+    void AtenderCliente (Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache);
 
     bool const IdentificarArticuloDeFoto(Cliente Cli);
 

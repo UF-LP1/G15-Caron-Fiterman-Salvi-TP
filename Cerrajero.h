@@ -23,20 +23,19 @@ class Cerrajero: public Persona {
 
 public:
     
-    Cerrajero(string nombre, string dni, string llave);
+    Cerrajero(string nombre, string dni, list <Llaves*> ListaLlaves);
 
 
-    bool HacerCopiaLlave(Llaves llave, Cliente Cli);
+    bool HacerCopiaLlave(Cliente Cli);
 
-    const string get_tipoDeLlave();
 
-    void set_tipoDeLlave(string llave);
-    friend class Llaves;
+    void set_ListaLlaves(list <Llaves*> ListaLlaves);
+    const list <Llaves*> get_ListaLlaves();
     
     ~Cerrajero();
 
 private: 
-    string tipoDeLlave;
+      list <Llaves*> ListaLlaves;
 };
 
 #endif //_CERRAJERO_H

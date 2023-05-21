@@ -10,44 +10,37 @@
  * Cerrajero implementation
  */
 
- Cerrajero::Cerrajero( string nombre, string dni, string llave) :Persona(nombre,dni) {
-    this->tipoDeLlave= llave;
+ Cerrajero::Cerrajero( string nombre, string dni, list <Llaves*> Llaves) :Persona(nombre,dni) {
+
 }
 
 
-const string Cerrajero::get_tipoDeLlave() {
-    return  this->tipoDeLlave;
-}
 
-
-void Cerrajero::set_tipoDeLlave(string llave) {
-    this->tipoDeLlave= llave;
+void Cerrajero::set_ListaLlaves(list <Llaves*> Llaves){
+    this->ListaLlaves = Llaves;
     return;
 }
 
-bool Cerrajero::HacerCopiaLlave(Llaves llave, Cliente Cli) {
-    bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
-    string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
-    cout << mensaje << endl;
+const list <Llaves*> Cerrajero::get_ListaLlaves(){
+    return this->ListaLlaves;
+}
+
+bool Cerrajero::HacerCopiaLlave(Cliente Cli) {
+
+    list<Llaves*>::iterator it;
     bool copia = false;
 
-    if(estadoFerreteria == true){ //si estamos abiertos
-        if(llave.get_nombreMerc() == "Llave Codificada"){
-            if(llave.get_TengoPermisoLlave() == true){
+    for(it = ListaLlaves.begin(); it != ListaLlaves.end(); it++){
+        if((*it)->get_nombreMerc() == Cli.get_tipoLlave()){
+            if(Cli.get_tipoLlave() == "Llave Magnetica" && (*it)->get_TengoPermisoLlave()){
                 copia = true;
-                cout << "Aqui tienes la copia <3" << endl;
             }
 
-            else
-               cout << "No tengo permiso para hacer la copia" << endl;
+            else if(Cli.get_tipoLlave() != "Llave Magnetica"){
+                copia = true;
+            }
         }
-
-        else if (llave.get_nombreMerc() != "Llave Codificada")
-            copia = true;
-            cout << "Aqui tienes la copia <3" << endl;
     }
-
-
 
 
     return copia;

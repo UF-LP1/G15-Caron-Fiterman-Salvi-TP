@@ -23,8 +23,9 @@ public:
 
     const bool get_estadoProblema();
 
+    void set_estadoProblema(bool status);
 
-    void set_estadoProblema( bool status);
+    void resolverProblema();
 
     ~Plomero();
 

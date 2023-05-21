@@ -22,22 +22,35 @@ Duenyo::Duenyo(string nombre, string dni, string art, bool cambioArt, float difA
 
 }
 
-void Duenyo::AtenderCliente (Cliente Client) { //AtenderCliente (Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache)
+void Duenyo::AtenderCliente (Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache){
 
     bool estadoFerreteria = Ferreteria::CartelAbiertoCerrado();
     //estadoFerreteria = true; //PARA PROBARLO SI ES HORARIO EN EL QUE ESTA CERRADO!!
     string mensaje = (estadoFerreteria == true) ? "Estamos Abiertos" : "Estamos Cerrados";
     cout << mensaje << endl;
 
-    /*if(Client.get_cerrajero()){
-
-    }
-
-    */
 
     bool estadoPago;
+
     if(estadoFerreteria == true){ //si estamos abiertos
         cout<<"Atendiendo a: " << Client.get_nombre()<<endl;
+
+        bool copiaLlave = false;
+        if(Client.get_cerrajero()){
+            copiaLlave = Cerra.HacerCopiaLlave(Client);
+            string mensaje2 = (copiaLlave == true) ? "Se hizo la copia de la llave" : "No se hizo la copia de la llave";
+            cout << mensaje2 << endl;
+        }
+
+        if(Client.get_despachante()){
+            despache.EntregarPedido(Client);
+        }
+
+        if(Client.get_plomero()){
+            plomo.resolverProblema();
+        }
+
+
         try {
                 estadoPago = CobrarYDarVuelto(Client);
         }
