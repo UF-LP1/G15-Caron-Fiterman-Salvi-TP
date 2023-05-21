@@ -27,7 +27,7 @@
 #include "customExceptions.h"
 
 using namespace std;
-
+Cliente crearClientePorConsola();
 
 int main()
 {
@@ -160,6 +160,19 @@ int main()
     delete TercerCliente;
 
 
+    //cliente por consola:
+    Cliente* Client = new Cliente(crearClientePorConsola());
+
+    Cindy.AtenderCliente(*Client, cerrajero, plomero, despache);
+
+    delete Client;
+
+    return 0;
+
+}
+
+
+Cliente crearClientePorConsola(){
     //Cliente por consola
     string nombreCli, dniCli, direccCli;
     string HerramientaAlq, ArticuloViejo, tipoLlaveQuiero;
@@ -199,7 +212,7 @@ int main()
         cin>>ArticuloViejo;
 
         cout<<"¿A que precio lo compro?"<<endl;
-        cin>>precioArtViejo;
+                    cin>>precioArtViejo;
     }
 
     cout<<"Tenes alguna foto de lo que necesitas o el articulo roto? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
@@ -233,12 +246,7 @@ int main()
         CliQuiero.push_back(auxArticulo);
     }
 
+    Cliente CliConsola(nombreCli,dniCli,direccCli,tieneFoto,CliQuiero,saldo, alquilerHerr, HerramientaAlq,cambioArt,precioArtViejo,ArticuloViejo,CliCerrajero,tipoLlaveQuiero,CliDespachante, CliPlomero);
 
-    Cliente* CliConsola = new Cliente(nombreCli,dniCli,direccCli,tieneFoto,CliQuiero,saldo, alquilerHerr, HerramientaAlq,cambioArt,precioArtViejo,ArticuloViejo,CliCerrajero,tipoLlaveQuiero,CliDespachante, CliPlomero);
-    Cindy.AtenderCliente(*CliConsola, cerrajero, plomero, despache);
-
-    delete CliConsola;
-
-    return 0;
-
+    return CliConsola;
 }
