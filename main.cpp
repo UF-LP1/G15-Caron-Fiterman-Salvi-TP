@@ -50,7 +50,7 @@ int main()
     cout<<"First element lista cliente: "<< listaPrimCli.front() << endl; //chequeo
     cout<<"Last element lista cliente: "<< listaPrimCli.back() << endl;
 
-    Cliente PrimerCliente("pablo", "234763357", "Palermo", false, listaPrimCli, 2000000, false, "amoladora", true, 150, "martillo", true, "Llave Magnetica",false, false); //creo cliente, le paso la lista
+    Cliente* PrimerCliente = new Cliente ("pablo", "234763357", "Palermo", false, listaPrimCli, 2000000, false, "amoladora", true, 150, "martillo", true, "Llave Magnetica",false, false); //creo cliente, le paso la lista
 
 
     //creo mi segundo cliente
@@ -65,7 +65,7 @@ int main()
     listaSegCli.push_back("mecha");
 
 
-    Cliente SegundoCliente("Juana", "36843346", "villa Crespo", true, listaSegCli, 240, true, "sierra", false, 0, "null", true,"Llave Simple", true, false);//creo al cliente, le paso la lista
+    Cliente* SegundoCliente = new Cliente("Juana", "36843346", "villa Crespo", true, listaSegCli, 240, true, "sierra", false, 0, "null", true,"Llave Simple", true, false);//creo al cliente, le paso la lista
 
     //creo mi tercer cliente
 
@@ -76,9 +76,12 @@ int main()
     listaTerCli.push_back("tender");
 
 
-    Cliente TercerCliente("Abril", "368644679", "Recoleta", false, listaTerCli, 10000000000000, false, "perforadora", false, 50, "tornillo", false,"null", false, true);//creo al cliente, le paso la lista
+    Cliente* TercerCliente = new Cliente("Abril", "368644679", "Recoleta", false, listaTerCli, 10000000000000, false, "perforadora", false, 50, "tornillo", false,"null", false, true);//creo al cliente, le paso la lista
 
-    list<Mercaderia*> MiMercaderia; //creo una lista de mercaderia
+
+    //creo la lista de mercaderia
+
+    list<Mercaderia*> MiMercaderia;
 
     Bazar Soga(30.0,600.0,true, 0,"soga");//creo los articulos de mercaderia
     Bazar Tender(30.0,1999.0,true, 15,"tender");
@@ -111,7 +114,7 @@ int main()
     cout<<"Last element lista mercaderia: "<< MiMercaderia.back()->get_nombreMerc() << endl;
 
     cout<<"Imprimir Stock"<<endl;
-    Duenyo::imprimirStock(MiMercaderia);
+    Duenyo::imprimirStock(MiMercaderia); //sobrecarga de operadores
 
 
     list<Herramientas_Alquiler*> HerrAql; //creo una lista de herramientas de alquiler
@@ -141,21 +144,101 @@ int main()
 
 
 
-    Despachante Despache ("Raul", "36863357", false);
+    Despachante despache ("Raul", "36863357", false);
     Plomero plomero ("Juan Carlos", "46824468", true);
     Cerrajero cerrajero("Diego", "36872496", listaDeLlaves);
 
     Duenyo Cindy("Cindy", "36741248", "clavo", false, false, 0.0, MiMercaderia, HerrAql);  //creo dueño, le paso la lista de MiMercaderia
 
     //pruebo todo:
-    Cindy.AtenderCliente(PrimerCliente, cerrajero, plomero, Despache);
-    Cindy.AtenderCliente(SegundoCliente, cerrajero, plomero, Despache);
-    Cindy.AtenderCliente(TercerCliente, cerrajero, plomero, Despache);
+    Cindy.AtenderCliente(*PrimerCliente, cerrajero, plomero, despache);
+    Cindy.AtenderCliente(*SegundoCliente, cerrajero, plomero, despache);
+    Cindy.AtenderCliente(*TercerCliente, cerrajero, plomero, despache);
 
-    //Cliente Client, Cerrajero Cerra, Plomero plomo, Despachante despache
+    delete PrimerCliente;
+    delete SegundoCliente;
+    delete TercerCliente;
 
 
+    //Cliente por consola
+    string nombreCli, dniCli, direccCli;
+    string HerramientaAlq, ArticuloViejo, tipoLlaveQuiero;
+    bool tieneFoto, alquilerHerr, cambioArt;
+    bool CliCerrajero, CliDespachante, CliPlomero;
+    list <string> CliQuiero;
+    int cantidadArticulos;
+    string auxArticulo;
+    float saldo, precioArtViejo;
 
+
+    cout<<"/////////////// CREAR TU PROPIO CLIENTE ///////////////"<<endl;
+
+
+    cout<<"Ingrese el Nombre del cliente: "<<endl;
+    cin>>nombreCli;
+
+    cout<<"Ingrese el DNI del cliente: "<<endl;
+    cin>>dniCli;
+
+    cout<<"Ingrese la direccion del cliente: "<<endl;
+    cin>>direccCli;
+
+    cout<<"Necesita Alquilar una herramienta? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
+    cin>>alquilerHerr;
+
+    if(alquilerHerr == true){
+        cout<<"Que herramienta desea alquilar? (todo en minusculas!!)"<<endl;
+        cin>>HerramientaAlq;
+    }
+
+    cout<<"Necesita cambiar un articulo? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
+    cin>>cambioArt;
+
+    if(cambioArt == true){
+        cout<<"Que articulo desea cambiar? (todo en minusculas!!)"<<endl;
+        cin>>ArticuloViejo;
+
+        cout<<"¿A que precio lo compro?"<<endl;
+        cin>>precioArtViejo;
+    }
+
+    cout<<"Tenes alguna foto de lo que necesitas o el articulo roto? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
+    cin>>tieneFoto;
+
+    cout<<"Necesitas un cerrajero? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
+    cin>>CliCerrajero;
+
+    if(CliCerrajero == true){
+        cout<<"Que llave desea copiar? (primer letra de cada palabra en mayuscula)"<<endl;
+        cin>>tipoLlaveQuiero;
+    }
+
+    cout<<"Necesitas un depachante? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
+    cin>>CliDespachante;
+
+    cout<<"Necesitas un Plomero? Insertar 1 si la respuesta es afirmativa y 0 si es negativa"<<endl;
+    cin>>CliPlomero;
+
+
+    cout<<"Cuanta plata tiene tu cliente?"<<endl;
+    cin>>saldo;
+
+    cout<<"Cuantos articulos quiere comprar tu cliente?"<<endl;
+    cin>>cantidadArticulos;
+
+
+    for(int i=0; i<cantidadArticulos; i++){
+        cout<<"Inserte el elemento nro: "<< i+1 <<" que quiere comprar el cliente (todo en minusculas)"<<endl;
+        cin>>auxArticulo;
+        CliQuiero.push_back(auxArticulo);
+    }
+
+
+    Cliente* CliConsola = new Cliente(nombreCli,dniCli,direccCli,tieneFoto,CliQuiero,saldo, alquilerHerr, HerramientaAlq,cambioArt,precioArtViejo,ArticuloViejo,CliCerrajero,tipoLlaveQuiero,CliDespachante, CliPlomero);
+    Cindy.AtenderCliente(*CliConsola, cerrajero, plomero, despache);
+
+    delete CliConsola;
 
     return 0;
+
 }
