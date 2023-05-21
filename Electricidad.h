@@ -28,8 +28,7 @@ Electricidad(float tam, float valor, bool envoltorio,int cant, string nombreElec
     
  ~Electricidad();
 
-private: 
-    string tipo_electri;
+
 };
 
 #endif //_ELECTRICIDAD_H

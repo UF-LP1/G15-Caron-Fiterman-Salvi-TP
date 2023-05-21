@@ -28,9 +28,6 @@ public:
     ~Bazar();
 
 
-
-private: 
-    string tipo_bazar;
 };
 
 #endif //_BAZAR_H

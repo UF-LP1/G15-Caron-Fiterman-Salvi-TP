@@ -31,7 +31,6 @@ public:
      ~Llaves();
 private:
     const bool TengoPermisoLlave;
-    string tipo_llave;
 };
 
 #endif //_LLAVES_H

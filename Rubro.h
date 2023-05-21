@@ -26,9 +26,6 @@ public:
 
     ~Rubro();
 
-private: 
-    string tipo_rubro;
-
 };
 
 #endif //_RUBRO_H
