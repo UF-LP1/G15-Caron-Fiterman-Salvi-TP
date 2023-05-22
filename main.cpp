@@ -159,13 +159,22 @@ int main()
     delete SegundoCliente;
     delete TercerCliente;
 
-
     //cliente por consola:
-    Cliente* Client = new Cliente(crearClientePorConsola());
 
-    Cindy.AtenderCliente(*Client, cerrajero, plomero, despache);
+    int cantidadClientesConsola;
+    cout<<"cuantos clientes quiere crear por consola? "<<endl;
+    cin>>cantidadClientesConsola;
 
-    delete Client;
+    for(int i=0; i<cantidadClientesConsola; i++){
+        cout<<"Cliente nro: "<< i+1 << " ingresado por consola"<<endl;
+
+        Cliente* Client = new Cliente(crearClientePorConsola());
+
+        Cindy.AtenderCliente(*Client, cerrajero, plomero, despache);
+
+        delete Client;
+    }
+
 
     return 0;
 
@@ -238,7 +247,6 @@ Cliente crearClientePorConsola(){
 
     cout<<"Cuantos articulos quiere comprar tu cliente?"<<endl;
     cin>>cantidadArticulos;
-
 
     for(int i=0; i<cantidadArticulos; i++){
         cout<<"Inserte el elemento nro: "<< i+1 <<" que quiere comprar el cliente (todo en minusculas)"<<endl;
